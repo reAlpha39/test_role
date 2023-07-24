@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
     final stepQuestionCubit = context.read<StepQuestionCubit>();
     return Scaffold(
       backgroundColor: const Color(0xff3E4095),
-      body: Stack(
+      body: MultiHitStack(
         children: [
           SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
@@ -39,91 +39,57 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     StepQuestion(
-                      offsetDx: 1.2,
-                      offsetDy: 3.9,
-                      onTap: () {},
+                      positionY: 200,
+                      positionX: 5,
+                      onTap: () => print('v'),
                       isClear: stepQuestionCubit.steps[0],
                     ),
                     StepQuestion(
-                      offsetDx: -1,
-                      offsetDy: 3.9,
-                      onTap: () {},
+                      positionY: 300,
+                      positionX: -1,
+                      onTap: () => print('x'),
                       isClear: stepQuestionCubit.steps[1],
-                    ),
-                    StepQuestion(
-                      offsetDx: 0,
-                      offsetDy: 6.1,
-                      onTap: () {},
-                      isClear: false,
-                    ),
-                    StepQuestion(
-                      offsetDx: 1.2,
-                      offsetDy: 8.3,
-                      onTap: () {},
-                      isClear: false,
-                    ),
-                    StepQuestion(
-                      offsetDx: -1,
-                      offsetDy: 8.3,
-                      onTap: () {},
-                      isClear: false,
-                    ),
-                    StepQuestion(
-                      offsetDx: 0,
-                      offsetDy: 10.5,
-                      onTap: () {},
-                      isClear: false,
-                    ),
-                    StepQuestion(
-                      offsetDx: 1.2,
-                      offsetDy: 12.5,
-                      onTap: () {},
-                      isClear: false,
-                    ),
-                    StepQuestion(
-                      offsetDx: -1,
-                      offsetDy: 12.5,
-                      onTap: () {},
-                      isClear: false,
                     ),
                   ],
                 );
               },
             ),
           ),
-          Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: const Color(0xff3E4095),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.25),
-                  spreadRadius: 0,
-                  blurRadius: 20,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: SafeArea(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text(
-                    'Perjalanan',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    'Yang Akan Mengetahui Siapa diri mu',
-                    style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      color: Colors.white,
-                    ),
+          IgnorePointer(
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: const Color(0xff3E4095),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 0,
+                    blurRadius: 20,
+                    offset: const Offset(0, 4),
                   ),
                 ],
+              ),
+              child: SafeArea(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      'Perjalanan',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Yang Akan Mengetahui Siapa diri mu',
+                      style: GoogleFonts.poppins(
+                        fontSize: 12,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

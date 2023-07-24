@@ -3,39 +3,34 @@ import 'package:flutter/material.dart';
 class StepQuestion extends StatelessWidget {
   const StepQuestion({
     super.key,
-    required this.offsetDx,
-    required this.offsetDy,
+    required this.positionY,
+    required this.positionX,
     this.onTap,
     required this.isClear,
   });
 
-  final double offsetDx;
-  final double offsetDy;
+  final double positionY;
+  final double positionX;
   final Function()? onTap;
   final bool isClear;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: FractionalTranslation(
-        translation: Offset(offsetDx, offsetDy),
-        child: GestureDetector(
-          onTap: isClear ? null : onTap,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              // Image.asset(
-              //   'assets/images/bubble.gif',
-              //   height: 100,
-              //   width: 100,
-              // ),
-              Image.asset(
-                isClear
-                    ? 'assets/icons/done_step.png'
-                    : 'assets/icons/locked_step.png',
-                height: 60,
-              ),
-            ],
+    final halfWidth = (MediaQuery.sizeOf(context).width / 2) - 30;
+    return Positioned(
+      top: positionY,
+      left: halfWidth + (positionX),
+      child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTap: onTap,
+        child: SizedBox(
+          height: 60,
+          width: 60,
+          child: Image.asset(
+            isClear
+                ? 'assets/icons/done_step.png'
+                : 'assets/icons/locked_step.png',
+            height: 60,
           ),
         ),
       ),
