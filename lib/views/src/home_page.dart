@@ -1,67 +1,132 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:test_role/blocs/blocs.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final stepQuestionCubit = context.read<StepQuestionCubit>();
     return Scaffold(
       backgroundColor: const Color(0xff3E4095),
-      body: SingleChildScrollView(
-        physics: const ClampingScrollPhysics(),
-        child: Stack(
-          children: [
-            Center(
-              child: Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.25),
-                      spreadRadius: 0,
-                      blurRadius: 20,
-                      offset: const Offset(0, 4),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            physics: const ClampingScrollPhysics(),
+            child: BlocBuilder<StepQuestionCubit, StepQuestionState>(
+              builder: (context, state) {
+                return Stack(
+                  children: [
+                    Center(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              spreadRadius: 0,
+                              blurRadius: 20,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/images/step_bg.svg',
+                        ),
+                      ),
+                    ),
+                    Step(
+                      offsetDx: 1.2,
+                      offsetDy: 3.9,
+                      onTap: () {},
+                      isClear: stepQuestionCubit.steps[0],
+                    ),
+                    Step(
+                      offsetDx: -1,
+                      offsetDy: 3.9,
+                      onTap: () {},
+                      isClear: stepQuestionCubit.steps[1],
+                    ),
+                    Step(
+                      offsetDx: 0,
+                      offsetDy: 6.1,
+                      onTap: () {},
+                      isClear: false,
+                    ),
+                    Step(
+                      offsetDx: 1.2,
+                      offsetDy: 8.3,
+                      onTap: () {},
+                      isClear: false,
+                    ),
+                    Step(
+                      offsetDx: -1,
+                      offsetDy: 8.3,
+                      onTap: () {},
+                      isClear: false,
+                    ),
+                    Step(
+                      offsetDx: 0,
+                      offsetDy: 10.5,
+                      onTap: () {},
+                      isClear: false,
+                    ),
+                    Step(
+                      offsetDx: 1.2,
+                      offsetDy: 12.5,
+                      onTap: () {},
+                      isClear: false,
+                    ),
+                    Step(
+                      offsetDx: -1,
+                      offsetDy: 12.5,
+                      onTap: () {},
+                      isClear: false,
                     ),
                   ],
+                );
+              },
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: const Color(0xff3E4095),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.25),
+                  spreadRadius: 0,
+                  blurRadius: 20,
+                  offset: const Offset(0, 4),
                 ),
-                child: SvgPicture.asset(
-                  'assets/images/step_bg.svg',
-                ),
+              ],
+            ),
+            child: SafeArea(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    'Perjalanan',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Yang Akan Mengetahui Siapa diri mu',
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
-
-            Step(
-              offsetDx: 1.2,
-              offsetDy: 3.8,
-              onTap: () {},
-              isClear: false,
-            ),
-            Step(
-              offsetDx: -1,
-              offsetDy: 3.8,
-              onTap: () {},
-              isClear: false,
-            ),
-            Step(
-              offsetDx: 1.2,
-              offsetDy: 6,
-              onTap: () {},
-              isClear: false,
-            ),
-            Step(
-              offsetDx: -1,
-              offsetDy: 6,
-              onTap: () {},
-              isClear: false,
-            ),
-            Step(
-              offsetDx: 0,
-              offsetDy: 8.2,
-              onTap: () {},
-              isClear: false,
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -88,11 +153,21 @@ class Step extends StatelessWidget {
         translation: Offset(offsetDx, offsetDy),
         child: GestureDetector(
           onTap: isClear ? null : onTap,
-          child: Image.asset(
-            isClear
-                ? 'assets/icons/done_step.png'
-                : 'assets/icons/locked_step.png',
-            height: 60,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              // Image.asset(
+              //   'assets/images/bubble.gif',
+              //   height: 100,
+              //   width: 100,
+              // ),
+              Image.asset(
+                isClear
+                    ? 'assets/icons/done_step.png'
+                    : 'assets/icons/locked_step.png',
+                height: 60,
+              ),
+            ],
           ),
         ),
       ),

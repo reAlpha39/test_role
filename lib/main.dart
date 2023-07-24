@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:test_role/blocs/blocs.dart';
 import 'package:test_role/views/views.dart';
 
 import 'injection.dart';
@@ -13,12 +16,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF3E4095)),
-        useMaterial3: true,
+    return BlocProvider(
+      create: (context) => getIt<StepQuestionCubit>(),
+      child: MaterialApp(
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF3E4095)),
+          useMaterial3: true,
+        ).copyWith(
+          textTheme: GoogleFonts.mochiyPopOneTextTheme(),
+        ),
+        home: const HomePage(),
       ),
-      home: const HomePage(),
     );
   }
 }

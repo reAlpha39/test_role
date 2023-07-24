@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'step_cubit.dart';
+part of 'step_question_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$StepState {
+mixin _$StepQuestionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -69,15 +69,16 @@ mixin _$StepState {
 }
 
 /// @nodoc
-abstract class $StepStateCopyWith<$Res> {
-  factory $StepStateCopyWith(StepState value, $Res Function(StepState) then) =
-      _$StepStateCopyWithImpl<$Res, StepState>;
+abstract class $StepQuestionStateCopyWith<$Res> {
+  factory $StepQuestionStateCopyWith(
+          StepQuestionState value, $Res Function(StepQuestionState) then) =
+      _$StepQuestionStateCopyWithImpl<$Res, StepQuestionState>;
 }
 
 /// @nodoc
-class _$StepStateCopyWithImpl<$Res, $Val extends StepState>
-    implements $StepStateCopyWith<$Res> {
-  _$StepStateCopyWithImpl(this._value, this._then);
+class _$StepQuestionStateCopyWithImpl<$Res, $Val extends StepQuestionState>
+    implements $StepQuestionStateCopyWith<$Res> {
+  _$StepQuestionStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -94,7 +95,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$StepStateCopyWithImpl<$Res, _$_Initial>
+    extends _$StepQuestionStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -107,7 +108,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'StepState.initial()';
+    return 'StepQuestionState.initial()';
   }
 
   @override
@@ -194,7 +195,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements StepState {
+abstract class _Initial implements StepQuestionState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -207,7 +208,7 @@ abstract class _$$_LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingCopyWithImpl<$Res>
-    extends _$StepStateCopyWithImpl<$Res, _$_Loading>
+    extends _$StepQuestionStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -220,7 +221,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'StepState.loading()';
+    return 'StepQuestionState.loading()';
   }
 
   @override
@@ -307,7 +308,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements StepState {
+abstract class _Loading implements StepQuestionState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -319,7 +320,7 @@ abstract class _$$_LoadedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadedCopyWithImpl<$Res>
-    extends _$StepStateCopyWithImpl<$Res, _$_Loaded>
+    extends _$StepQuestionStateCopyWithImpl<$Res, _$_Loaded>
     implements _$$_LoadedCopyWith<$Res> {
   __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
       : super(_value, _then);
@@ -332,7 +333,7 @@ class _$_Loaded implements _Loaded {
 
   @override
   String toString() {
-    return 'StepState.loaded()';
+    return 'StepQuestionState.loaded()';
   }
 
   @override
@@ -419,7 +420,7 @@ class _$_Loaded implements _Loaded {
   }
 }
 
-abstract class _Loaded implements StepState {
+abstract class _Loaded implements StepQuestionState {
   const factory _Loaded() = _$_Loaded;
 }
 
@@ -431,7 +432,7 @@ abstract class _$$_ErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ErrorCopyWithImpl<$Res>
-    extends _$StepStateCopyWithImpl<$Res, _$_Error>
+    extends _$StepQuestionStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
       : super(_value, _then);
@@ -444,7 +445,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'StepState.error()';
+    return 'StepQuestionState.error()';
   }
 
   @override
@@ -531,6 +532,6 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements StepState {
+abstract class _Error implements StepQuestionState {
   const factory _Error() = _$_Error;
 }
