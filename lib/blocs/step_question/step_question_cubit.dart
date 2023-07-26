@@ -16,6 +16,10 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
   List<QaModel>? qaModels;
   int selectedAnswer = -1;
 
+  bool isNotDif = false;
+  String sameTypeA = '';
+  String sameTypeB = '';
+
   loadQa() async {
     emit(const StepQuestionState.loading());
     final jsonText = await rootBundle.loadString('assets/question_answer.json');
@@ -43,6 +47,82 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
     );
 
     _resetAnswer();
+
+    if (qId == 19) {
+      checkPoint();
+    }
+
     emit(const StepQuestionState.loaded());
+  }
+
+  checkPoint() {
+    emit(const StepQuestionState.loading());
+    int typeA = 0;
+    int typeB = 0;
+    int typeC = 0;
+
+    for (QaModel data in qaModels!) {
+      switch (data.answer) {
+        case '1':
+          typeA++;
+          break;
+        case '2':
+          typeB++;
+        case '3':
+          typeC++;
+        default:
+      }
+    }
+
+    if (typeA == typeB) {
+      isNotDif = true;
+      sameTypeA = '1';
+      sameTypeB = '2';
+    }
+    if (typeA == typeC) {
+      isNotDif = true;
+      sameTypeA = '1';
+      sameTypeB = '3';
+    }
+    if (typeB == typeC) {
+      isNotDif = true;
+      sameTypeA = '2';
+      sameTypeB = '3';
+    }
+    emit(const StepQuestionState.loaded());
+  }
+
+  void checkResult() {
+    int typeA = 0;
+    int typeB = 0;
+    int typeC = 0;
+
+    for (QaModel data in qaModels!) {
+      switch (data.answer) {
+        case '1':
+          typeA++;
+          break;
+        case '2':
+          typeB++;
+        case '3':
+          typeC++;
+        default:
+      }
+    }
+
+    if (typeA > typeB && typeA > typeC) {
+      print('A');
+      return;
+    }
+
+    if (typeB > typeA && typeB > typeC) {
+      print('B');
+      return;
+    }
+
+    if (typeC > typeA && typeC > typeB) {
+      print('C');
+      return;
+    }
   }
 }

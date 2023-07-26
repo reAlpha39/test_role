@@ -141,32 +141,49 @@ class HomePage extends StatelessWidget {
                 ),
                 BlocBuilder<StepQuestionCubit, StepQuestionState>(
                   builder: (context, state) {
+                    if (cubit.isNotDif) {
+                      return Positioned(
+                        top: 1975,
+                        left: MediaQuery.sizeOf(context).width / 2 - 50,
+                        child: GestureDetector(
+                          onTap: () =>
+                              QuestionDialog.open(context: context, id: 21),
+                          child: SvgPicture.asset(
+                            'assets/icons/extra_step.svg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
+                  },
+                ),
+                BlocBuilder<StepQuestionCubit, StepQuestionState>(
+                  builder: (context, state) {
                     bool isAllAnswered = false;
                     if (cubit.qaModels != null) {
+                      if (!cubit.isNotDif) {
+                        cubit.qaModels = cubit.qaModels!
+                            .where((element) => element.id != 21)
+                            .toList();
+                      }
                       isAllAnswered = cubit.qaModels!
                               .where((element) => element.answer != null)
                               .length ==
-                          cubit.qaModels?.length;
+                          cubit.qaModels!.length;
                     }
 
                     if (isAllAnswered) {
                       return Positioned(
-                        top: 2030,
-                        left: MediaQuery.sizeOf(context).width / 2 - 60,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFFFFB819),
-                            foregroundColor: const Color(0xff3E4095),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 32,
-                              vertical: 16,
-                            ),
+                        top: 2070,
+                        left: MediaQuery.sizeOf(context).width / 2 - 75,
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: SvgPicture.asset(
+                            'assets/icons/result_button.svg',
+                            fit: BoxFit.cover,
                           ),
-                          onPressed: () {},
-                          child: const Text('Lihat Hasil'),
                         ),
                       );
                     } else {
@@ -215,12 +232,15 @@ class HomePage extends StatelessWidget {
                     BlocBuilder<StepQuestionCubit, StepQuestionState>(
                       builder: (context, state) {
                         final cubit = context.read<StepQuestionCubit>();
-                        final double percent = cubit.qaModels?.length != null
-                            ? cubit.qaModels!
-                                    .where((element) => element.answer != null)
-                                    .length /
-                                cubit.qaModels!.length
-                            : 0;
+
+                        double percent = 0;
+                        if (cubit.qaModels != null) {
+                          percent = cubit.qaModels!
+                                  .where((element) => element.answer != null)
+                                  .length /
+                              cubit.qaModels!.length;
+                        }
+
                         final double position = (290 * percent) - 25 < 10
                             ? 10
                             : (290 * percent) -

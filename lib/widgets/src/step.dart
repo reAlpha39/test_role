@@ -39,8 +39,14 @@ class StepQuestion extends StatelessWidget {
 
     return BlocBuilder<StepQuestionCubit, StepQuestionState>(
       builder: (context, state) {
-        bool isClear = cubit.qaModels?[qId - 1].answer == null ? false : true;
-        bool isClickable = clickable(cubit);
+        bool isClear = false;
+        bool isClickable = false;
+        try {
+          isClear = cubit.qaModels?[qId - 1].answer == null ? false : true;
+          isClickable = clickable(cubit);
+        } catch (e) {
+          return const SizedBox();
+        }
         return Positioned(
           top: positionY,
           left: halfWidth + (positionX),

@@ -3,6 +3,7 @@
     {
       "id": 1,
       "question": "Mana yang kamu lebih suka?",
+      "bobot": 5,
       "answers": [
         "3_Angka, data, dan laporan keuanga",
         "2_Membangun hubungan dan menawarkan produk/layanannya",
@@ -178,6 +179,15 @@
         "1_Ya, saya merasa nyaman bekerja dalam tim yang beragam",
         "3_Tidak, saya lebih suka bekerja dengan tim yang memiliki latar belakang dan keahlian yang serupa",
         "2_Saya merasa nyaman dengan kedua pilihan atau tidak yakin"
+      ]
+    },
+    {
+      "id": 21,
+      "question": "Apakah kamu lebih suka fokus pada pengembangan produk atau layanan yang sudah ada atau lebih suka menciptakan produk atau layanan baru dari awal?",
+      "answers": [
+        "2_Fokus pada pengembangan produk atau layanan yang sudah ada",
+        "1_Menciptakan produk atau layanan baru dari awal",
+        "3_Saya suka keduanya atau tidak yakin"
       ]
     }
   ]

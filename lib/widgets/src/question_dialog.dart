@@ -4,11 +4,15 @@ import 'package:test_role/blocs/blocs.dart';
 import 'package:test_role/widgets/src/inner_shadow.dart';
 
 class QuestionDialog {
-  static void open({required BuildContext context, required int id}) {
+  static void open({
+    required BuildContext context,
+    required int id,
+    bool extra = false,
+  }) {
     showDialog(
       useSafeArea: false,
       context: context,
-      barrierDismissible: false,
+      barrierDismissible: true,
       builder: (context) => Center(
         child: Stack(
           alignment: AlignmentDirectional.topCenter,
@@ -33,7 +37,7 @@ class QuestionDialog {
                     width: 10,
                   ),
                 ),
-                child: _buildBody(context: context, id: id),
+                child: _buildBody(context: context, id: id, extra: extra),
               ),
             ),
             Container(
@@ -62,7 +66,11 @@ class QuestionDialog {
     );
   }
 
-  static _buildBody({required BuildContext context, required int id}) {
+  static _buildBody({
+    required BuildContext context,
+    required int id,
+    bool extra = false,
+  }) {
     final cubit = context.read<StepQuestionCubit>();
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -77,51 +85,104 @@ class QuestionDialog {
           ),
         ),
         const SizedBox(height: 16),
-        ...List.generate(
-          cubit.qaModels?[id - 1].answers?.length ?? 0,
-          (index) => BlocBuilder<StepQuestionCubit, StepQuestionState>(
-            builder: (context, state) {
-              final answer = cubit.qaModels![id - 1].answers![index];
-              return GestureDetector(
-                onTap: () =>
-                    cubit.selectAnswer(int.parse(answer.split('_')[0])),
-                child: InnerShadow(
-                  blur: 10,
-                  color: Colors.black26,
-                  offset: const Offset(5, 5),
-                  child: Container(
-                    margin: const EdgeInsets.only(bottom: 8),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 16,
-                      horizontal: 32,
-                    ),
-                    decoration: BoxDecoration(
-                      color: cubit.selectedAnswer ==
-                              int.parse(answer.split('_')[0])
-                          ? const Color(0xFFFFB819)
-                          : const Color(0xff3E4095),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text(
-                        answer.split('_')[1],
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.white,
+        if (cubit.isNotDif)
+          ...List.generate(
+            cubit.qaModels?[id - 1].answers?.length ?? 0,
+            (index) {
+              final answer =
+                  cubit.qaModels![id - 1].answers![index].split('_')[0];
+
+              if (answer == cubit.sameTypeB || answer == cubit.sameTypeA) {
+                return BlocBuilder<StepQuestionCubit, StepQuestionState>(
+                  builder: (context, state) {
+                    final answer = cubit.qaModels![id - 1].answers![index];
+                    return GestureDetector(
+                      onTap: () =>
+                          cubit.selectAnswer(int.parse(answer.split('_')[0])),
+                      child: InnerShadow(
+                        blur: 10,
+                        color: Colors.black26,
+                        offset: const Offset(5, 5),
+                        child: Container(
+                          margin: const EdgeInsets.only(bottom: 8),
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 16,
+                            horizontal: 32,
+                          ),
+                          decoration: BoxDecoration(
+                            color: cubit.selectedAnswer ==
+                                    int.parse(answer.split('_')[0])
+                                ? const Color(0xFFFFB819)
+                                : const Color(0xff3E4095),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Text(
+                              answer.split('_')[1],
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              } else {
+                return const SizedBox();
+              }
+            },
+          )
+        else
+          ...List.generate(
+            cubit.qaModels?[id - 1].answers?.length ?? 0,
+            (index) => BlocBuilder<StepQuestionCubit, StepQuestionState>(
+              builder: (context, state) {
+                final answer = cubit.qaModels![id - 1].answers![index];
+                return GestureDetector(
+                  onTap: () =>
+                      cubit.selectAnswer(int.parse(answer.split('_')[0])),
+                  child: InnerShadow(
+                    blur: 10,
+                    color: Colors.black26,
+                    offset: const Offset(5, 5),
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 8),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 16,
+                        horizontal: 32,
+                      ),
+                      decoration: BoxDecoration(
+                        color: cubit.selectedAnswer ==
+                                int.parse(answer.split('_')[0])
+                            ? const Color(0xFFFFB819)
+                            : const Color(0xff3E4095),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text(
+                          answer.split('_')[1],
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
-        ),
         const SizedBox(height: 20),
         GestureDetector(
           onTap: () {
             if (cubit.selectedAnswer == -1) {
+              Navigator.of(context).pop();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Pilih jawaban terlebih dahulu'),
