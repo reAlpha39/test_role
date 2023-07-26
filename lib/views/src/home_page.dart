@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:test_role/blocs/blocs.dart';
 import 'package:test_role/widgets/widgets.dart';
 
@@ -13,6 +14,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xff3E4095),
       body: MultiHitStack(
+        alignment: AlignmentDirectional.topCenter,
         children: [
           SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
@@ -144,7 +146,7 @@ class HomePage extends StatelessWidget {
           ),
           IgnorePointer(
             child: Container(
-              width: double.infinity,
+              width: 394,
               decoration: BoxDecoration(
                 color: const Color(0xff3E4095),
                 boxShadow: [
@@ -159,6 +161,7 @@ class HomePage extends StatelessWidget {
               child: SafeArea(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Text(
                       'Perjalanan',
@@ -175,6 +178,43 @@ class HomePage extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
+                    const SizedBox(height: 8),
+                    BlocBuilder<StepQuestionCubit, StepQuestionState>(
+                      builder: (context, state) {
+                        final cubit = context.read<StepQuestionCubit>();
+                        final double percent = cubit.qaModels?.length != null
+                            ? cubit.qaModels!
+                                    .where((element) => element.answer != null)
+                                    .length /
+                                cubit.qaModels!.length
+                            : 0;
+                        return Stack(
+                          children: [
+                            UnconstrainedBox(
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 44),
+                                child: LinearPercentIndicator(
+                                  width: 350.0,
+                                  lineHeight: 10.0,
+                                  percent: percent,
+                                  barRadius: const Radius.circular(100),
+                                  backgroundColor: Colors.grey.withOpacity(.25),
+                                  progressColor: const Color(0xFFFFB819),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              left: (290 * percent) + 10,
+                              child: Image.asset(
+                                'assets/icons/progress_step.png',
+                                height: 40,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 32),
                   ],
                 ),
               ),
