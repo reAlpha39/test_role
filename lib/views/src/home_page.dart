@@ -11,6 +11,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<StepQuestionCubit>();
     return Scaffold(
       backgroundColor: const Color(0xff3E4095),
       body: MultiHitStack(
@@ -18,130 +19,161 @@ class HomePage extends StatelessWidget {
         children: [
           SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
-            child: BlocBuilder<StepQuestionCubit, StepQuestionState>(
-              builder: (context, state) {
-                return Stack(
-                  children: [
-                    Center(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.25),
-                              spreadRadius: 0,
-                              blurRadius: 20,
-                              offset: const Offset(0, 4),
+            child: Stack(
+              children: [
+                Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.25),
+                          spreadRadius: 0,
+                          blurRadius: 20,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/images/step_bg.svg',
+                    ),
+                  ),
+                ),
+                const StepQuestion(
+                  positionY: 220,
+                  positionX: -80,
+                  qId: 1,
+                ),
+                const StepQuestion(
+                  positionY: 220,
+                  positionX: 80,
+                  qId: 2,
+                ),
+                const StepQuestion(
+                  positionY: 355,
+                  positionX: 0,
+                  qId: 3,
+                ),
+                const StepQuestion(
+                  positionY: 485,
+                  positionX: -80,
+                  qId: 4,
+                ),
+                const StepQuestion(
+                  positionY: 485,
+                  positionX: 80,
+                  qId: 5,
+                ),
+                const StepQuestion(
+                  positionY: 617,
+                  positionX: 0,
+                  qId: 6,
+                ),
+                const StepQuestion(
+                  positionY: 745,
+                  positionX: -80,
+                  qId: 7,
+                ),
+                const StepQuestion(
+                  positionY: 745,
+                  positionX: 80,
+                  qId: 8,
+                ),
+                const StepQuestion(
+                  positionY: 875,
+                  positionX: 0,
+                  qId: 9,
+                ),
+                const StepQuestion(
+                  positionY: 1005,
+                  positionX: -80,
+                  qId: 10,
+                ),
+                const StepQuestion(
+                  positionY: 1005,
+                  positionX: 80,
+                  qId: 11,
+                ),
+                const StepQuestion(
+                  positionY: 1140,
+                  positionX: 0,
+                  qId: 12,
+                ),
+                const StepQuestion(
+                  positionY: 1270,
+                  positionX: -80,
+                  qId: 13,
+                ),
+                const StepQuestion(
+                  positionY: 1270,
+                  positionX: 80,
+                  qId: 14,
+                ),
+                const StepQuestion(
+                  positionY: 1400,
+                  positionX: 0,
+                  qId: 15,
+                ),
+                const StepQuestion(
+                  positionY: 1530,
+                  positionX: -80,
+                  qId: 16,
+                ),
+                const StepQuestion(
+                  positionY: 1530,
+                  positionX: 80,
+                  qId: 17,
+                ),
+                const StepQuestion(
+                  positionY: 1660,
+                  positionX: 0,
+                  qId: 18,
+                ),
+                const StepQuestion(
+                  positionY: 1790,
+                  positionX: -80,
+                  qId: 19,
+                ),
+                const StepQuestion(
+                  positionY: 1790,
+                  positionX: 80,
+                  qId: 20,
+                ),
+                BlocBuilder<StepQuestionCubit, StepQuestionState>(
+                  builder: (context, state) {
+                    bool isAllAnswered = false;
+                    if (cubit.qaModels != null) {
+                      isAllAnswered = cubit.qaModels!
+                              .where((element) => element.answer != null)
+                              .length ==
+                          cubit.qaModels?.length;
+                    }
+
+                    if (isAllAnswered) {
+                      return Positioned(
+                        top: 2030,
+                        left: MediaQuery.sizeOf(context).width / 2 - 60,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFFFFB819),
+                            foregroundColor: const Color(0xff3E4095),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
                             ),
-                          ],
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 32,
+                              vertical: 16,
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: const Text('Lihat Hasil'),
                         ),
-                        child: SvgPicture.asset(
-                          'assets/images/step_bg.svg',
-                        ),
-                      ),
-                    ),
-                    const StepQuestion(
-                      positionY: 220,
-                      positionX: -80,
-                      qId: 1,
-                    ),
-                    const StepQuestion(
-                      positionY: 220,
-                      positionX: 80,
-                      qId: 2,
-                    ),
-                    const StepQuestion(
-                      positionY: 355,
-                      positionX: 0,
-                      qId: 3,
-                    ),
-                    const StepQuestion(
-                      positionY: 485,
-                      positionX: 80,
-                      qId: 4,
-                    ),
-                    const StepQuestion(
-                      positionY: 485,
-                      positionX: -80,
-                      qId: 5,
-                    ),
-                    const StepQuestion(
-                      positionY: 617,
-                      positionX: 0,
-                      qId: 6,
-                    ),
-                    const StepQuestion(
-                      positionY: 745,
-                      positionX: -80,
-                      qId: 7,
-                    ),
-                    const StepQuestion(
-                      positionY: 745,
-                      positionX: 80,
-                      qId: 8,
-                    ),
-                    const StepQuestion(
-                      positionY: 875,
-                      positionX: 0,
-                      qId: 9,
-                    ),
-                    const StepQuestion(
-                      positionY: 1005,
-                      positionX: -80,
-                      qId: 10,
-                    ),
-                    const StepQuestion(
-                      positionY: 1005,
-                      positionX: 80,
-                      qId: 11,
-                    ),
-                    const StepQuestion(
-                      positionY: 1140,
-                      positionX: 0,
-                      qId: 12,
-                    ),
-                    const StepQuestion(
-                      positionY: 1270,
-                      positionX: -80,
-                      qId: 13,
-                    ),
-                    const StepQuestion(
-                      positionY: 1270,
-                      positionX: 80,
-                      qId: 14,
-                    ),
-                    const StepQuestion(
-                      positionY: 1400,
-                      positionX: 0,
-                      qId: 15,
-                    ),
-                    const StepQuestion(
-                      positionY: 1530,
-                      positionX: -80,
-                      qId: 16,
-                    ),
-                    const StepQuestion(
-                      positionY: 1530,
-                      positionX: 80,
-                      qId: 17,
-                    ),
-                    const StepQuestion(
-                      positionY: 1660,
-                      positionX: 0,
-                      qId: 18,
-                    ),
-                    const StepQuestion(
-                      positionY: 1790,
-                      positionX: -80,
-                      qId: 19,
-                    ),
-                    const StepQuestion(
-                      positionY: 1790,
-                      positionX: 80,
-                      qId: 20,
-                    ),
-                  ],
-                );
-              },
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
+                  },
+                ),
+              ],
             ),
           ),
           IgnorePointer(
