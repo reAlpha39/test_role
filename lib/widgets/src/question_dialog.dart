@@ -119,9 +119,37 @@ class QuestionDialog {
           ),
         ),
         const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Close'),
+        GestureDetector(
+          onTap: () {
+            if (cubit.selectedAnswer == -1) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Pilih jawaban terlebih dahulu'),
+                ),
+              );
+            } else {
+              cubit.saveAnswer(qId: id - 1);
+              Navigator.of(context).pop();
+            }
+          },
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: 32,
+            ),
+            decoration: BoxDecoration(
+              color: const Color(0xff3E4095),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: const Color(0xFFFFB819),
+                width: 10,
+              ),
+            ),
+            child: const Text(
+              'Simpan',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
         ),
         const SizedBox(height: 20),
       ],

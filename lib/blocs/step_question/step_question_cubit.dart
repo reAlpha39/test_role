@@ -30,9 +30,19 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
     emit(const StepQuestionState.loaded());
   }
 
-  resetAnswer() {
+  _resetAnswer() {
     emit(const StepQuestionState.loading());
     selectedAnswer = -1;
+    emit(const StepQuestionState.loaded());
+  }
+
+  saveAnswer({required int qId}) {
+    emit(const StepQuestionState.loading());
+    qaModels![qId] = qaModels![qId].copyWith(
+      answer: selectedAnswer.toString(),
+    );
+
+    _resetAnswer();
     emit(const StepQuestionState.loaded());
   }
 }
