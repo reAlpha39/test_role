@@ -188,6 +188,12 @@ class HomePage extends StatelessWidget {
                                     .length /
                                 cubit.qaModels!.length
                             : 0;
+                        final double position = (290 * percent) - 25 < 10
+                            ? 10
+                            : (290 * percent) -
+                                25 +
+                                (2 * percent) +
+                                (30 * percent);
                         return Stack(
                           children: [
                             UnconstrainedBox(
@@ -204,10 +210,11 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                              left: (290 * percent) + 10,
+                              left: position,
                               child: Image.asset(
                                 'assets/icons/progress_step.png',
                                 height: 40,
+                                width: 40,
                               ),
                             ),
                           ],
