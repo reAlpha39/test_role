@@ -1,18 +1,184 @@
 {
-    "data": [
-      {
-        "id": 1,
-        "question": "What is the capital of Indonesia?",
-        "answers": [
-          "Jakarta",
-          "Bandung",
-          "Surabaya"
-        ]
-      },
-      {
-        "id": 2,
-        "question": "x + 1 = 2, x?",
-        "answers": ["1", "2", "3"]
-      }
-    ]
+  "data": [
+    {
+      "id": 1,
+      "question": "Mana yang kamu lebih suka?",
+      "answers": [
+        "3_Angka, data, dan laporan keuanga",
+        "2_Membangun hubungan dan menawarkan produk/layanannya",
+        "1_Dua-duanya atau tidak yakin"
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Pekerjaan mana yang lebih kamu sukai?",
+      "answers": [
+        "2_Bekerja di luar ruangan dan memiliki kreativitas yang tinggi",
+        "3_Bekerja di dalam ruangan, bekerja dengan teknologi terbaru, dan menciptakan solusi teknologi baru",
+        "1_Saya suka keduanya atau tidak yakin"
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Kamu lebih suka fokus pada hal seperti apa?",
+      "answers": [
+        "1_Fokus pada detail dan tugas-tugas rutin",
+        "3_Menyelesaikan masalah yang kompleks dan mengembangkan solusi baru",
+        "2_Saya suka keduanya atau tidak yakin"
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Apa yang kamu lakukan di waktu luangmu?",
+      "answers": [
+        "2_Membaca buku, menonton film, atau melakukan hal-hal lain yang bersifat individual",
+        "1_Bermain dengan teman, menghadiri acara sosial, atau melakukan kegiatan lain yang melibatkan banyak orang",
+        "3_Saya suka keduanya atau tidak yakin"
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Apakah kamu merasa nyaman berbicara di depan umum dan memimpin sebuah kelompok?",
+      "answers": [
+        "1_Nyaman berbicara di depan umum dan memimpin kelompok",
+        "3_Lebih suka bekerja secara individual di belakang layar",
+        "2_Saya suka keduanya atau tidak yakin"
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Jika kamu membuat suatu produk, apa yang kamu utamakan?",
+      "answers": [
+        "2_Fokus pada tampilan visual dan estetika produk atau layanan",
+        "3_Fokus pada fungsionalitas dan kemampuan teknis",
+        "1_Saya suka keduanya atau tidak yakin"
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Apakah kamu suka berinovasi dan mencoba hal-hal baru?",
+      "answers": [
+        "2_Suka berinovasi dan mencoba hal-hal baru",
+        "1_Lebih suka bekerja dengan metode yang terbukti berhasil",
+        "3_Saya suka keduanya atau tidak yakin"
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Lingkungan seperti apa yang membuat kamu nyaman? ",
+      "answers": [
+        "2_Senang bekerja dalam lingkungan yang cepat dan berubah-ubah",
+        "3_Lebih suka lingkungan yang stabil dan terstruktur",
+        "1_aya suka keduanya atau tidak yakin"
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Kamu lebih suka bekerja dalam kelompok atau sendiri?",
+      "answers": [
+        "2_Lebih suka bekerja dengan orang lain untuk mencapai tujuan bersama",
+        "3_Lebih suka bekerja sendiri dan mengatur waktu dengan bebas",
+        "1_Saya suka keduanya atau tidak yakin"
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Apa yang kamu lakukan di waktu luangmu?",
+      "answers": [
+        "2_Fokus pada pengembangan produk atau layanan yang sudah ada",
+        "1_Menciptakan produk atau layanan baru dari awal",
+        "3_Saya suka keduanya atau tidak yakin"
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Apakah kamu memiliki keterampilan teknis dalam pemrograman, pengembangan software, atau teknologi terkait?",
+      "answers": [
+        "3_Ya",
+        "2_Tidak",
+        "1_Saya memiliki beberapa pengetahuan tetapi tidak yakin"
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Apakah kamu memiliki keterampilan teknis dalam pemrograman, pengembangan software, atau teknologi terkait?",
+      "answers": [
+        "2_Ya",
+        "3_Tidak",
+        "1_Saya memiliki beberapa kemampuan tetapi tidak yakin"
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Apakah kamu memiliki pemahaman yang baik tentang tren desain, mode, atau kreativitas visual?",
+      "answers": [
+        "1_Ya",
+        "3_Tidak",
+        "2_Saya memiliki beberapa pengetahuan tetapi tidak yakin"
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Bagaimana kamu merespon perkembangan teknologi?",
+      "answers": [
+        "3_aya suka mencari tahu tentang teknologi terbaru dan bermain-main dengan perangkat teknologi",
+        "2_Saya tidak begitu tertarik dengan teknologi terbaru",
+        "1_Saya memiliki beberapa ketertarikan tetapi tidak yakin"
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Bagaimana kamu memandang sebuah permasalahan?",
+      "answers": [
+        "3_Saya memiliki pemikiran kritis dan mampu melihat masalah dari berbagai sudut pandang",
+        "2_ya tidak begitu memiliki pemikiran kritis",
+        "1_aya memiliki beberapa kemampuan tetapi tidak yakin"
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Apakah kamu memiliki kemampuan dalam merancang dan mengembangkan strategi bisnis?",
+      "answers": [
+        "2_Ya",
+        "3_Tidak",
+        "1_Saya memiliki beberapa pengetahuan tetapi tidak yakin"
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Bagaimana kamu menyelesaikan sebuah masalah?",
+      "answers": [
+        "1_Saya suka menggali ide-ide baru dan berpikir kreatif",
+        "2_Saya lebih suka pendekatan yang lebih tradisional",
+        "3_Saya memiliki beberapa ketertarikan tetapi tidak yakin"
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Pekerjaan seperti apa yang kamu sukai?",
+      "answers": [
+        "3_Saya cenderung memilih pekerjaan yang menantang dan memberikan kesempatan untuk belajar",
+        "2_Saya lebih suka pekerjaan yang lebih stabil dan teratur",
+        "1_Saya memiliki beberapa ketertarikan tetapi tidak yakin"
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Apakah kamu memiliki keahlian dalam menganalisis data dan mengambil keputusan berdasarkan informasi yang terkumpul?",
+      "answers": [
+        "2_Ya",
+        "3_Tidak",
+        "1_Saya memiliki beberapa pengetahuan tetapi tidak yakin"
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Apa yang kamu lakukan di waktu luangmu?",
+      "answers": [
+        "1_Ya, saya merasa nyaman bekerja dalam tim yang beragam",
+        "3_Tidak, saya lebih suka bekerja dengan tim yang memiliki latar belakang dan keahlian yang serupa",
+        "2_Saya merasa nyaman dengan kedua pilihan atau tidak yakin"
+      ]
+    }
+  ]
 }
