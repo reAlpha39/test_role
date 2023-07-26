@@ -41,14 +41,14 @@ class HomePage extends StatelessWidget {
                     StepQuestion(
                       positionY: 200,
                       positionX: 5,
-                      onTap: () => print('v'),
-                      isClear: stepQuestionCubit.steps[0],
+                      onTap: () => QuestionDialog.open(context: context, id: 1),
+                      isClear: true,
                     ),
                     StepQuestion(
                       positionY: 300,
                       positionX: -1,
                       onTap: () => print('x'),
-                      isClear: stepQuestionCubit.steps[1],
+                      isClear: false,
                     ),
                   ],
                 );

@@ -1,0 +1,18 @@
+{
+    "data": [
+      {
+        "id": 1,
+        "question": "What is the capital of Indonesia?",
+        "answers": [
+          "Jakarta",
+          "Bandung",
+          "Surabaya"
+        ]
+      },
+      {
+        "id": 2,
+        "question": "x + 1 = 2, x?",
+        "answers": ["1", "2", "3"]
+      }
+    ]
+}

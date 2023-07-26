@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_role/blocs/blocs.dart';
 
 class QuestionDialog {
-  static void open({required BuildContext context}) {
+  static void open({required BuildContext context, required int id}) {
+    final _cubit = context.read<StepQuestionCubit>();
     showDialog(
       useSafeArea: false,
       context: context,
@@ -34,14 +37,27 @@ class QuestionDialog {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const SizedBox(height: 48),
-                    const Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis nisl eget nunc aliquam aliquet. Donec quis nisl eget nunc aliquam aliquet.',
+                    Text(
+                      _cubit.qaModels?[id - 1].question ?? '-',
                       textAlign: TextAlign.left,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 12,
                         color: Colors.white,
                       ),
                     ),
+                    const SizedBox(height: 16),
+                    ..._cubit.qaModels![id - 1].answers!
+                        .map(
+                          (e) => Text(
+                            e,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                        )
+                        .toList(),
                     const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () => Navigator.of(context).pop(),
@@ -62,10 +78,10 @@ class QuestionDialog {
                   width: 10,
                 ),
               ),
-              child: const Text(
-                'Pertanyaan 1',
+              child: Text(
+                'Pertanyaan $id',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
