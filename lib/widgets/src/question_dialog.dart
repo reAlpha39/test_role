@@ -3,21 +3,25 @@ import 'package:flutter/material.dart';
 class QuestionDialog {
   static void open({required BuildContext context}) {
     showDialog(
+      useSafeArea: false,
       context: context,
       barrierDismissible: false,
-      builder: (context) => Align(
-        alignment: Alignment.center,
+      builder: (context) => Center(
         child: Stack(
+          alignment: AlignmentDirectional.topCenter,
           children: [
             Padding(
               padding: const EdgeInsets.only(
-                top: 32,
+                top: 36,
                 left: 16,
                 right: 16,
+                bottom: 16,
               ),
               child: Container(
                 padding: const EdgeInsets.all(16),
-                width: 500,
+                constraints: const BoxConstraints(
+                  maxWidth: 500,
+                ),
                 decoration: BoxDecoration(
                   color: const Color(0xff3E4095),
                   borderRadius: BorderRadius.circular(30),
@@ -29,7 +33,7 @@ class QuestionDialog {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const SizedBox(height: 60),
+                    const SizedBox(height: 48),
                     const Text(
                       '1.	Mana yang kamu lebih suka?',
                       textAlign: TextAlign.left,
@@ -54,29 +58,23 @@ class QuestionDialog {
                 ),
               ),
             ),
-            Positioned(
-              top: 0,
-              left: (MediaQuery.sizeOf(context).width / 2) - 125,
-              child: Container(
-                width: 250,
-                height: 80,
-                decoration: BoxDecoration(
-                  color: const Color(0xff3E4095),
-                  borderRadius: BorderRadius.circular(30),
-                  border: Border.all(
-                    color: const Color(0xFFFFB819),
-                    width: 10,
-                  ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              decoration: BoxDecoration(
+                color: const Color(0xff3E4095),
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(
+                  color: const Color(0xFFFFB819),
+                  width: 10,
                 ),
-                child: const Center(
-                  child: Text(
-                    'Step 1',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
+              ),
+              child: const Text(
+                'Pertanyaan 1',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
               ),
             ),
