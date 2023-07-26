@@ -9,6 +9,7 @@ class QaModel with _$QaModel {
     int? id,
     String? question,
     List<String>? answers,
+    String? answer,
   }) = _QaModel;
 
   factory QaModel.fromJson(Map<String, dynamic> json) =>

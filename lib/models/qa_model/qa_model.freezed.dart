@@ -23,6 +23,7 @@ mixin _$QaModel {
   int? get id => throw _privateConstructorUsedError;
   String? get question => throw _privateConstructorUsedError;
   List<String>? get answers => throw _privateConstructorUsedError;
+  String? get answer => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $QaModelCopyWith<$Res> {
   factory $QaModelCopyWith(QaModel value, $Res Function(QaModel) then) =
       _$QaModelCopyWithImpl<$Res, QaModel>;
   @useResult
-  $Res call({int? id, String? question, List<String>? answers});
+  $Res call({int? id, String? question, List<String>? answers, String? answer});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$QaModelCopyWithImpl<$Res, $Val extends QaModel>
     Object? id = freezed,
     Object? question = freezed,
     Object? answers = freezed,
+    Object? answer = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -67,6 +69,10 @@ class _$QaModelCopyWithImpl<$Res, $Val extends QaModel>
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      answer: freezed == answer
+          ? _value.answer
+          : answer // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -78,7 +84,7 @@ abstract class _$$_QaModelCopyWith<$Res> implements $QaModelCopyWith<$Res> {
       __$$_QaModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? question, List<String>? answers});
+  $Res call({int? id, String? question, List<String>? answers, String? answer});
 }
 
 /// @nodoc
@@ -94,6 +100,7 @@ class __$$_QaModelCopyWithImpl<$Res>
     Object? id = freezed,
     Object? question = freezed,
     Object? answers = freezed,
+    Object? answer = freezed,
   }) {
     return _then(_$_QaModel(
       id: freezed == id
@@ -108,6 +115,10 @@ class __$$_QaModelCopyWithImpl<$Res>
           ? _value._answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      answer: freezed == answer
+          ? _value.answer
+          : answer // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -115,7 +126,7 @@ class __$$_QaModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_QaModel implements _QaModel {
-  _$_QaModel({this.id, this.question, final List<String>? answers})
+  _$_QaModel({this.id, this.question, final List<String>? answers, this.answer})
       : _answers = answers;
 
   factory _$_QaModel.fromJson(Map<String, dynamic> json) =>
@@ -136,8 +147,11 @@ class _$_QaModel implements _QaModel {
   }
 
   @override
+  final String? answer;
+
+  @override
   String toString() {
-    return 'QaModel(id: $id, question: $question, answers: $answers)';
+    return 'QaModel(id: $id, question: $question, answers: $answers, answer: $answer)';
   }
 
   @override
@@ -148,13 +162,14 @@ class _$_QaModel implements _QaModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.question, question) ||
                 other.question == question) &&
-            const DeepCollectionEquality().equals(other._answers, _answers));
+            const DeepCollectionEquality().equals(other._answers, _answers) &&
+            (identical(other.answer, answer) || other.answer == answer));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, question, const DeepCollectionEquality().hash(_answers));
+  int get hashCode => Object.hash(runtimeType, id, question,
+      const DeepCollectionEquality().hash(_answers), answer);
 
   @JsonKey(ignore: true)
   @override
@@ -174,7 +189,8 @@ abstract class _QaModel implements QaModel {
   factory _QaModel(
       {final int? id,
       final String? question,
-      final List<String>? answers}) = _$_QaModel;
+      final List<String>? answers,
+      final String? answer}) = _$_QaModel;
 
   factory _QaModel.fromJson(Map<String, dynamic> json) = _$_QaModel.fromJson;
 
@@ -184,6 +200,8 @@ abstract class _QaModel implements QaModel {
   String? get question;
   @override
   List<String>? get answers;
+  @override
+  String? get answer;
   @override
   @JsonKey(ignore: true)
   _$$_QaModelCopyWith<_$_QaModel> get copyWith =>

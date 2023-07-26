@@ -39,16 +39,175 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     StepQuestion(
-                      positionY: 200,
-                      positionX: 5,
+                      positionY: 220,
+                      positionX: -80,
                       onTap: () => QuestionDialog.open(context: context, id: 1),
-                      isClear: true,
+                      isClear: stepQuestionCubit.qaModels?[0].answer == null
+                          ? false
+                          : true,
                     ),
                     StepQuestion(
-                      positionY: 300,
-                      positionX: -1,
-                      onTap: () => print('x'),
-                      isClear: false,
+                      positionY: 220,
+                      positionX: 80,
+                      onTap: () => QuestionDialog.open(context: context, id: 2),
+                      isClear: stepQuestionCubit.qaModels?[1].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 355,
+                      positionX: 0,
+                      onTap: () => QuestionDialog.open(context: context, id: 3),
+                      isClear: stepQuestionCubit.qaModels?[2].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 485,
+                      positionX: 80,
+                      onTap: () => QuestionDialog.open(context: context, id: 4),
+                      isClear: stepQuestionCubit.qaModels?[3].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 485,
+                      positionX: -80,
+                      onTap: () => QuestionDialog.open(context: context, id: 5),
+                      isClear: stepQuestionCubit.qaModels?[4].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 617,
+                      positionX: 0,
+                      onTap: () => QuestionDialog.open(context: context, id: 6),
+                      isClear: stepQuestionCubit.qaModels?[5].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 745,
+                      positionX: -80,
+                      onTap: () => QuestionDialog.open(context: context, id: 7),
+                      isClear: stepQuestionCubit.qaModels?[6].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 745,
+                      positionX: 80,
+                      onTap: () => QuestionDialog.open(context: context, id: 8),
+                      isClear: stepQuestionCubit.qaModels?[7].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 875,
+                      positionX: 0,
+                      onTap: () => QuestionDialog.open(context: context, id: 9),
+                      isClear: stepQuestionCubit.qaModels?[8].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 1005,
+                      positionX: -80,
+                      onTap: () =>
+                          QuestionDialog.open(context: context, id: 10),
+                      isClear: stepQuestionCubit.qaModels?[9].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 1005,
+                      positionX: 80,
+                      onTap: () =>
+                          QuestionDialog.open(context: context, id: 11),
+                      isClear: stepQuestionCubit.qaModels?[10].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 1140,
+                      positionX: 0,
+                      onTap: () =>
+                          QuestionDialog.open(context: context, id: 12),
+                      isClear: stepQuestionCubit.qaModels?[11].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 1270,
+                      positionX: -80,
+                      onTap: () =>
+                          QuestionDialog.open(context: context, id: 13),
+                      isClear: stepQuestionCubit.qaModels?[12].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 1270,
+                      positionX: 80,
+                      onTap: () =>
+                          QuestionDialog.open(context: context, id: 14),
+                      isClear: stepQuestionCubit.qaModels?[13].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 1400,
+                      positionX: 0,
+                      onTap: () =>
+                          QuestionDialog.open(context: context, id: 15),
+                      isClear: stepQuestionCubit.qaModels?[14].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 1530,
+                      positionX: -80,
+                      onTap: () =>
+                          QuestionDialog.open(context: context, id: 16),
+                      isClear: stepQuestionCubit.qaModels?[15].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 1530,
+                      positionX: 80,
+                      onTap: () =>
+                          QuestionDialog.open(context: context, id: 17),
+                      isClear: stepQuestionCubit.qaModels?[16].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 1660,
+                      positionX: 0,
+                      onTap: () =>
+                          QuestionDialog.open(context: context, id: 18),
+                      isClear: stepQuestionCubit.qaModels?[17].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 1790,
+                      positionX: -80,
+                      onTap: () =>
+                          QuestionDialog.open(context: context, id: 19),
+                      isClear: stepQuestionCubit.qaModels?[18].answer == null
+                          ? false
+                          : true,
+                    ),
+                    StepQuestion(
+                      positionY: 1790,
+                      positionX: 80,
+                      onTap: () =>
+                          QuestionDialog.open(context: context, id: 20),
+                      isClear: stepQuestionCubit.qaModels?[19].answer == null
+                          ? false
+                          : true,
                     ),
                   ],
                 );
