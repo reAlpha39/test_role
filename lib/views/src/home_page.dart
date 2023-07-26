@@ -211,7 +211,7 @@ class HomePage extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 4),
                     BlocBuilder<StepQuestionCubit, StepQuestionState>(
                       builder: (context, state) {
                         final cubit = context.read<StepQuestionCubit>();
