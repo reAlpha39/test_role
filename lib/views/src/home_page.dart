@@ -35,6 +35,7 @@ class HomePage extends StatelessWidget {
                     ),
                     child: SvgPicture.asset(
                       'assets/images/step_bg.svg',
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
