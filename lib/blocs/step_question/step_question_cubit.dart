@@ -14,12 +14,25 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
   StepQuestionCubit() : super(const StepQuestionState.initial());
 
   List<QaModel>? qaModels;
+  int selectedAnswer = -1;
 
   loadQa() async {
     emit(const StepQuestionState.loading());
     final jsonText = await rootBundle.loadString('assets/question_answer.json');
     final data = jsonDecode(jsonText);
     qaModels = List<QaModel>.from(data['data'].map((x) => QaModel.fromJson(x)));
+    emit(const StepQuestionState.loaded());
+  }
+
+  selectAnswer(int index) {
+    emit(const StepQuestionState.loading());
+    selectedAnswer = index;
+    emit(const StepQuestionState.loaded());
+  }
+
+  resetAnswer() {
+    emit(const StepQuestionState.loading());
+    selectedAnswer = -1;
     emit(const StepQuestionState.loaded());
   }
 }

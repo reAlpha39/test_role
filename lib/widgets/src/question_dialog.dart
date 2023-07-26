@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_role/blocs/blocs.dart';
+import 'package:test_role/widgets/src/inner_shadow.dart';
 
 class QuestionDialog {
   static void open({required BuildContext context, required int id}) {
-    final _cubit = context.read<StepQuestionCubit>();
     showDialog(
       useSafeArea: false,
       context: context,
@@ -33,39 +33,7 @@ class QuestionDialog {
                     width: 10,
                   ),
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const SizedBox(height: 48),
-                    Text(
-                      _cubit.qaModels?[id - 1].question ?? '-',
-                      textAlign: TextAlign.left,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    ..._cubit.qaModels![id - 1].answers!
-                        .map(
-                          (e) => Text(
-                            e,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 12,
-                              color: Colors.white,
-                            ),
-                          ),
-                        )
-                        .toList(),
-                    const SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('Close'),
-                    ),
-                    const SizedBox(height: 20),
-                  ],
-                ),
+                child: _buildBody(context: context, id: id),
               ),
             ),
             Container(
@@ -91,6 +59,70 @@ class QuestionDialog {
           ],
         ),
       ),
+    );
+  }
+
+  static _buildBody({required BuildContext context, required int id}) {
+    final cubit = context.read<StepQuestionCubit>();
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SizedBox(height: 48),
+        Text(
+          cubit.qaModels?[id - 1].question ?? '-',
+          textAlign: TextAlign.left,
+          style: const TextStyle(
+            fontSize: 12,
+            color: Colors.white,
+          ),
+        ),
+        const SizedBox(height: 16),
+        ...List.generate(
+          cubit.qaModels?[id - 1].answers?.length ?? 0,
+          (index) => BlocBuilder<StepQuestionCubit, StepQuestionState>(
+            builder: (context, state) {
+              final answer = cubit.qaModels![id - 1].answers![index];
+              return GestureDetector(
+                onTap: () =>
+                    cubit.selectAnswer(int.parse(answer.split('_')[0])),
+                child: InnerShadow(
+                  blur: 10,
+                  color: Colors.black26,
+                  offset: const Offset(5, 5),
+                  child: Container(
+                    margin: const EdgeInsets.only(bottom: 8),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 16,
+                      horizontal: 32,
+                    ),
+                    decoration: BoxDecoration(
+                      color: cubit.selectedAnswer ==
+                              int.parse(answer.split('_')[0])
+                          ? const Color(0xFFFFB819)
+                          : const Color(0xff3E4095),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      answer.split('_')[1],
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: 20),
+        ElevatedButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('Close'),
+        ),
+        const SizedBox(height: 20),
+      ],
     );
   }
 
