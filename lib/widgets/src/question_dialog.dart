@@ -102,12 +102,14 @@ class QuestionDialog {
                           : const Color(0xff3E4095),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Text(
-                      answer.split('_')[1],
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.white,
+                    child: Center(
+                      child: Text(
+                        answer.split('_')[1],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
