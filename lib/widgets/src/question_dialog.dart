@@ -31,7 +31,7 @@ class QuestionDialog {
                   children: [
                     const SizedBox(height: 60),
                     const Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis nisl eget nunc aliquam aliquet. Donec quis nisl eget nunc aliquam aliquet.',
+                      '1.	Mana yang kamu lebih suka?',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 12,
@@ -41,7 +41,13 @@ class QuestionDialog {
                     const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('Close'),
+                      child: Text(
+                        'Close',
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          primary: const Color(0xff3E4095),
+                          side:
+                              const BorderSide(width: 1, color: Colors.orange)),
                     ),
                     const SizedBox(height: 20),
                   ],
@@ -64,7 +70,7 @@ class QuestionDialog {
                 ),
                 child: const Center(
                   child: Text(
-                    'Pertanyaan 1',
+                    'Step 1',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
