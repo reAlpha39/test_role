@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:test_role/blocs/animate_scroll/animate_scroll_cubit.dart';
 import 'package:test_role/blocs/blocs.dart';
 import 'package:test_role/widgets/widgets.dart';
 
@@ -176,7 +175,7 @@ class HomePage extends StatelessWidget {
                         top: 2070,
                         left: MediaQuery.sizeOf(context).width / 2 - 75,
                         child: GestureDetector(
-                          onTap: () => cubit.checkResult(),
+                          onTap: () => cubit.checkResult(context),
                           child: SvgPicture.asset(
                             'assets/icons/result_button.svg',
                             fit: BoxFit.cover,

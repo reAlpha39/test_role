@@ -22,6 +22,8 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
   String sameTypeA = '';
   String sameTypeB = '';
 
+  String result = '';
+
   loadQa() async {
     emit(const StepQuestionState.loading());
     final jsonText = await rootBundle.loadString('assets/question_answer.json');
@@ -115,7 +117,7 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
 
     final temp = qaModels!;
 
-    if (!isNotDif) {
+    if (!isNotDif && result.isEmpty) {
       // remove last question if no total answer the same
       temp.removeAt(20);
     }
@@ -134,16 +136,19 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
     }
 
     if (typeA > typeB && typeA > typeC) {
+      result = '1';
       ResultDialog.open(context: context, id: 1);
       return;
     }
 
     if (typeB > typeA && typeB > typeC) {
+      result = '2';
       ResultDialog.open(context: context, id: 2);
       return;
     }
 
     if (typeC > typeA && typeC > typeB) {
+      result = '3';
       ResultDialog.open(context: context, id: 3);
       return;
     }
