@@ -38,13 +38,13 @@ class ResultDialog {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     if (id == 1) ...[
-                      Image.asset('assets/images/hipster_card.jpg'),
+                      Image.asset('assets/images/hipster_card.png'),
                     ],
                     if (id == 2) ...[
-                      Image.asset('assets/images/hustler_card.jpg'),
+                      Image.asset('assets/images/hustler_card.png'),
                     ],
                     if (id == 3) ...[
-                      Image.asset('assets/images/hacker_card.jpg'),
+                      Image.asset('assets/images/hacker_card.png'),
                     ],
                     const SizedBox(height: 16),
                     GestureDetector(
@@ -53,16 +53,16 @@ class ResultDialog {
                         switch (id) {
                           case 1:
                             url =
-                                'https://realpha39.github.io/test_role/assets/assets/images/hipster_card.jpg';
+                                'https://realpha39.github.io/test_role/assets/assets/images/hipster_card.png';
                             break;
                           case 2:
                             url =
-                                'https://realpha39.github.io/test_role/assets/assets/images/hustler_card.jpg';
+                                'https://realpha39.github.io/test_role/assets/assets/images/hustler_card.png';
                             break;
 
                           default:
                             url =
-                                'https://realpha39.github.io/test_role/assets/assets/images/hacker_card.jpg';
+                                'https://realpha39.github.io/test_role/assets/assets/images/hacker_card.png';
                         }
                         final Uri uri = Uri.parse(url);
 
