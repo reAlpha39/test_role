@@ -5,7 +5,7 @@
       "question": "Mana yang kamu lebih suka?",
       "bobot": 5,
       "answers": [
-        "3_Angka, data, dan laporan keuanga",
+        "3_Angka, data, dan laporan keuangan",
         "2_Membangun hubungan dan menawarkan produk/layanannya",
         "1_Dua-duanya atau tidak yakin"
       ]
@@ -174,7 +174,7 @@
     },
     {
       "id": 20,
-      "question": "Apa yang kamu lakukan di waktu luangmu?",
+      "question": "Apakah kamu merasa nyaman bekerja dalam tim dengan beragam latar belakang, keahlian, dan pandangan yang berbeda-beda?",
       "answers": [
         "1_Ya, saya merasa nyaman bekerja dalam tim yang beragam",
         "3_Tidak, saya lebih suka bekerja dengan tim yang memiliki latar belakang dan keahlian yang serupa",
