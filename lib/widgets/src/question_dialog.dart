@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_role/blocs/animate_scroll/animate_scroll_cubit.dart';
 import 'package:test_role/blocs/blocs.dart';
 import 'package:test_role/widgets/src/inner_shadow.dart';
 
@@ -191,6 +192,10 @@ class QuestionDialog {
             } else {
               cubit.saveAnswer(qId: id - 1);
               Navigator.of(context).pop();
+              if (id < 3) return;
+              if (id.isOdd ) {
+                context.read<AnimateScrollCubit>().animateToIndex((id));
+              }
             }
           },
           child: Container(

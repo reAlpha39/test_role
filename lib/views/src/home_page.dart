@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:test_role/blocs/animate_scroll/animate_scroll_cubit.dart';
 import 'package:test_role/blocs/blocs.dart';
 import 'package:test_role/widgets/widgets.dart';
 
@@ -18,6 +19,7 @@ class HomePage extends StatelessWidget {
         alignment: AlignmentDirectional.topCenter,
         children: [
           SingleChildScrollView(
+            controller: context.read<AnimateScrollCubit>().controller,
             physics: const ClampingScrollPhysics(),
             child: Stack(
               children: [
@@ -163,10 +165,6 @@ class HomePage extends StatelessWidget {
                   builder: (context, state) {
                     bool isAllAnswered = false;
                     if (cubit.qaModels != null) {
-                      if (!cubit.isNotDif) {
-                        cubit.qaModels!.last =
-                            cubit.qaModels!.last.copyWith(answer: '1');
-                      }
                       isAllAnswered = cubit.qaModels!
                               .where((element) => element.answer != null)
                               .length ==

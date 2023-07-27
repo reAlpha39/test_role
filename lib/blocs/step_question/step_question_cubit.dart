@@ -74,6 +74,15 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
       }
     }
 
+    print(
+      'typeA: ' +
+          typeA.toString() +
+          ', typeB: ' +
+          typeB.toString() +
+          ', typeC: ' +
+          typeC.toString(),
+    );
+
     if (typeA == typeB) {
       isNotDif = true;
       sameTypeA = '1';
@@ -89,6 +98,11 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
       sameTypeA = '2';
       sameTypeB = '3';
     }
+
+    if (!isNotDif) {
+      qaModels!.last = qaModels!.last.copyWith(answer: '1');
+    }
+
     emit(const StepQuestionState.loaded());
   }
 

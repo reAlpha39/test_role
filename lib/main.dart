@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:test_role/blocs/animate_scroll/animate_scroll_cubit.dart';
 import 'package:test_role/blocs/blocs.dart';
 import 'package:test_role/views/views.dart';
 
@@ -16,8 +17,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<StepQuestionCubit>()..loadQa(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<StepQuestionCubit>()..loadQa(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<AnimateScrollCubit>(),
+        ),
+      ],
       child: MaterialApp(
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF3E4095)),
@@ -25,7 +33,7 @@ class MyApp extends StatelessWidget {
         ).copyWith(
           textTheme: GoogleFonts.mochiyPopOneTextTheme(),
         ),
-        home: const HomePage(),
+        home: HomePage(),
       ),
     );
   }
