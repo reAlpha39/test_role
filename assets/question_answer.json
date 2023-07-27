@@ -70,7 +70,7 @@
       "answers": [
         "2_Senang bekerja dalam lingkungan yang cepat dan berubah-ubah",
         "3_Lebih suka lingkungan yang stabil dan terstruktur",
-        "1_aya suka keduanya atau tidak yakin"
+        "1_Saya suka keduanya atau tidak yakin"
       ]
     },
     {
@@ -122,7 +122,7 @@
       "id": 14,
       "question": "Bagaimana kamu merespon perkembangan teknologi?",
       "answers": [
-        "3_aya suka mencari tahu tentang teknologi terbaru dan bermain-main dengan perangkat teknologi",
+        "3_Saya suka mencari tahu tentang teknologi terbaru dan bermain-main dengan perangkat teknologi",
         "2_Saya tidak begitu tertarik dengan teknologi terbaru",
         "1_Saya memiliki beberapa ketertarikan tetapi tidak yakin"
       ]
@@ -132,8 +132,8 @@
       "question": "Bagaimana kamu memandang sebuah permasalahan?",
       "answers": [
         "3_Saya memiliki pemikiran kritis dan mampu melihat masalah dari berbagai sudut pandang",
-        "2_ya tidak begitu memiliki pemikiran kritis",
-        "1_aya memiliki beberapa kemampuan tetapi tidak yakin"
+        "2_Saya tidak begitu memiliki pemikiran kritis",
+        "1_Saya memiliki beberapa kemampuan tetapi tidak yakin"
       ]
     },
     {
