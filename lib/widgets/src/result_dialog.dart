@@ -49,10 +49,25 @@ class ResultDialog {
                     const SizedBox(height: 16),
                     GestureDetector(
                       onTap: () async {
-                        final Uri url = Uri.parse('https://flutter.dev');
+                        String url = '';
+                        switch (id) {
+                          case 1:
+                            url =
+                                'https://realpha39.github.io/test_role/assets/assets/images/hipster_card.jpg';
+                            break;
+                          case 2:
+                            url =
+                                'https://realpha39.github.io/test_role/assets/assets/images/hustler_card.jpg';
+                            break;
 
-                        if (await canLaunchUrl(url)) {
-                          await launchUrl(url);
+                          default:
+                            url =
+                                'https://realpha39.github.io/test_role/assets/assets/images/hacker_card.jpg';
+                        }
+                        final Uri uri = Uri.parse(url);
+
+                        if (await canLaunchUrl(uri)) {
+                          await launchUrl(uri);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
