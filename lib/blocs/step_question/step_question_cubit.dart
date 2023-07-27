@@ -1,10 +1,12 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:test_role/models/qa_model/qa_model.dart';
+import 'package:test_role/widgets/widgets.dart';
 
 part 'step_question_state.dart';
 part 'step_question_cubit.freezed.dart';
@@ -83,17 +85,17 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
           typeC.toString(),
     );
 
-    if (typeA == typeB) {
+    if (typeA == typeB && typeA > typeC) {
       isNotDif = true;
       sameTypeA = '1';
       sameTypeB = '2';
     }
-    if (typeA == typeC) {
+    if (typeA == typeC && typeA > typeB) {
       isNotDif = true;
       sameTypeA = '1';
       sameTypeB = '3';
     }
-    if (typeB == typeC) {
+    if (typeB == typeC && typeB > typeA) {
       isNotDif = true;
       sameTypeA = '2';
       sameTypeB = '3';
@@ -106,7 +108,7 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
     emit(const StepQuestionState.loaded());
   }
 
-  void checkResult() {
+  void checkResult(BuildContext context) {
     int typeA = 0;
     int typeB = 0;
     int typeC = 0;
@@ -132,17 +134,17 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
     }
 
     if (typeA > typeB && typeA > typeC) {
-      print('A');
+      ResultDialog.open(context: context, id: 1);
       return;
     }
 
     if (typeB > typeA && typeB > typeC) {
-      print('B');
+      ResultDialog.open(context: context, id: 2);
       return;
     }
 
     if (typeC > typeA && typeC > typeB) {
-      print('C');
+      ResultDialog.open(context: context, id: 3);
       return;
     }
   }
