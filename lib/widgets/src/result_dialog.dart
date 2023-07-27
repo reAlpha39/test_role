@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ResultDialog {
   static void open({
@@ -48,26 +48,18 @@ class ResultDialog {
                     ],
                     const SizedBox(height: 16),
                     GestureDetector(
-                      onTap: () {
-                        Share.shareXFiles(
-                          [
-                            if (id == 1) ...[
-                              XFile('assets/images/hipster_card.jpg'),
-                            ],
-                            if (id == 2) ...[
-                              XFile('assets/images/hustler_card.jpg'),
-                            ],
-                            if (id == 3) ...[
-                              XFile('assets/images/hacker_card.jpg'),
-                            ]
-                          ],
-                          subject: 'Share',
-                          text: switch (id) {
-                            1 => 'Hipster',
-                            2 => 'Hustler',
-                            _ => 'Hacker',
-                          },
-                        );
+                      onTap: () async {
+                        final Uri url = Uri.parse('https://flutter.dev');
+
+                        if (await canLaunchUrl(url)) {
+                          await launchUrl(url);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Tidak dapat mendownload file'),
+                            ),
+                          );
+                        }
                         Navigator.of(context).pop();
                       },
                       child: Container(
@@ -84,7 +76,7 @@ class ResultDialog {
                           ),
                         ),
                         child: const Text(
-                          'Share',
+                          'Download',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
