@@ -164,9 +164,8 @@ class HomePage extends StatelessWidget {
                     bool isAllAnswered = false;
                     if (cubit.qaModels != null) {
                       if (!cubit.isNotDif) {
-                        cubit.qaModels = cubit.qaModels!
-                            .where((element) => element.id != 21)
-                            .toList();
+                        cubit.qaModels!.last =
+                            cubit.qaModels!.last.copyWith(answer: '1');
                       }
                       isAllAnswered = cubit.qaModels!
                               .where((element) => element.answer != null)
@@ -179,7 +178,7 @@ class HomePage extends StatelessWidget {
                         top: 2070,
                         left: MediaQuery.sizeOf(context).width / 2 - 75,
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () => cubit.checkResult(),
                           child: SvgPicture.asset(
                             'assets/icons/result_button.svg',
                             fit: BoxFit.cover,

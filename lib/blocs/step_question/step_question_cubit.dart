@@ -97,7 +97,14 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
     int typeB = 0;
     int typeC = 0;
 
-    for (QaModel data in qaModels!) {
+    final temp = qaModels!;
+
+    if (!isNotDif) {
+      // remove last question if no total answer the same
+      temp.removeAt(20);
+    }
+
+    for (QaModel data in temp) {
       switch (data.answer) {
         case '1':
           typeA++;
