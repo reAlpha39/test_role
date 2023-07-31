@@ -54,16 +54,16 @@ class ResultDialog {
                         switch (id) {
                           case 1:
                             url =
-                                'https://realpha39.github.io/test_role/assets/assets/images/hipster_card.png';
+                                'https://porcalabs.github.io/test_role/assets/assets/images/hipster_card.png';
                             break;
                           case 2:
                             url =
-                                'https://realpha39.github.io/test_role/assets/assets/images/hustler_card.png';
+                                'https://porcalabs.github.io/test_role/assets/assets/images/hustler_card.png';
                             break;
 
                           default:
                             url =
-                                'https://realpha39.github.io/test_role/assets/assets/images/hacker_card.png';
+                                'https://porcalabs.github.io/test_role/assets/assets/images/hacker_card.png';
                         }
                         final Uri uri = Uri.parse(url);
 
