@@ -37,6 +37,7 @@ class ResultDialog {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    const SizedBox(height: 16),
                     if (id == 1) ...[
                       Image.asset('assets/images/hipster_card.png'),
                     ],
@@ -46,7 +47,7 @@ class ResultDialog {
                     if (id == 3) ...[
                       Image.asset('assets/images/hacker_card.png'),
                     ],
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 32),
                     GestureDetector(
                       onTap: () async {
                         String url = '';
