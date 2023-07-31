@@ -56,8 +56,8 @@ class StepQuestion extends StatelessWidget {
                 ? () => QuestionDialog.open(context: context, id: qId)
                 : null,
             child: SizedBox(
-              height: size + (isClickable ? 10 : 0),
-              width: size + (isClickable ? 10 : 0),
+              height: size,
+              width: size,
               child: Image.asset(
                 isClickable
                     ? 'assets/icons/current_step.gif'
