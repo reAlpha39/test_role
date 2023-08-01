@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         ).copyWith(
           textTheme: GoogleFonts.mochiyPopOneTextTheme(),
         ),
-        home: HomePage(),
+        home: const HomePage(),
       ),
     );
   }

@@ -18,17 +18,33 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
   List<QaModel>? qaModels;
   int selectedAnswer = -1;
 
+  String name = '';
+
   bool isNotDif = false;
   String sameTypeA = '';
   String sameTypeB = '';
 
   String result = '';
 
+  TextEditingController nameController = TextEditingController();
+
+  @override
+  close() async {
+    nameController.dispose();
+    return super.close();
+  }
+
   loadQa() async {
     emit(const StepQuestionState.loading());
     final jsonText = await rootBundle.loadString('assets/question_answer.json');
     final data = jsonDecode(jsonText);
     qaModels = List<QaModel>.from(data['data'].map((x) => QaModel.fromJson(x)));
+    emit(const StepQuestionState.loaded());
+  }
+
+  saveName() {
+    emit(const StepQuestionState.loading());
+    name = nameController.text;
     emit(const StepQuestionState.loaded());
   }
 
@@ -153,5 +169,4 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
       return;
     }
   }
-
 }
