@@ -53,8 +53,17 @@ class StepQuestion extends StatelessWidget {
           child: GestureDetector(
             behavior: HitTestBehavior.translucent,
             onTap: isClickable
-                ? () => QuestionDialog.open(context: context, id: qId)
-                : null,
+                ? () => QuestionDialog.open(
+                      context: context,
+                      id: qId,
+                    )
+                : isClear
+                    ? () => QuestionDialog.open(
+                          context: context,
+                          id: qId,
+                          isPreview: true,
+                        )
+                    : null,
             child: SizedBox(
               height: size,
               width: size,

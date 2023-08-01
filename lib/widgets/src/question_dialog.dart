@@ -9,6 +9,7 @@ class QuestionDialog {
     required BuildContext context,
     required int id,
     bool extra = false,
+    bool isPreview = false,
   }) {
     showDialog(
       useSafeArea: false,
@@ -38,7 +39,12 @@ class QuestionDialog {
                     width: 10,
                   ),
                 ),
-                child: _buildBody(context: context, id: id, extra: extra),
+                child: _buildBody(
+                  context: context,
+                  id: id,
+                  extra: extra,
+                  isPreview: isPreview,
+                ),
               ),
             ),
             Container(
@@ -71,8 +77,13 @@ class QuestionDialog {
     required BuildContext context,
     required int id,
     bool extra = false,
+    bool isPreview = false,
   }) {
     final cubit = context.read<StepQuestionCubit>();
+    if (isPreview) {
+      final answer = cubit.qaModels![id - 1].answer ?? '';
+      cubit.selectAnswer(int.parse(answer));
+    }
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -98,8 +109,9 @@ class QuestionDialog {
                   builder: (context, state) {
                     final answer = cubit.qaModels![id - 1].answers![index];
                     return GestureDetector(
-                      onTap: () =>
-                          cubit.selectAnswer(int.parse(answer.split('_')[0])),
+                      onTap: () => isPreview
+                          ? null
+                          : cubit.selectAnswer(int.parse(answer.split('_')[0])),
                       child: InnerShadow(
                         blur: 10,
                         color: Colors.black26,
@@ -144,8 +156,9 @@ class QuestionDialog {
               builder: (context, state) {
                 final answer = cubit.qaModels![id - 1].answers![index];
                 return GestureDetector(
-                  onTap: () =>
-                      cubit.selectAnswer(int.parse(answer.split('_')[0])),
+                  onTap: () => isPreview
+                      ? null
+                      : cubit.selectAnswer(int.parse(answer.split('_')[0])),
                   child: Container(
                     margin: const EdgeInsets.only(bottom: 8),
                     padding: const EdgeInsets.symmetric(
@@ -184,43 +197,67 @@ class QuestionDialog {
             ),
           ),
         const SizedBox(height: 20),
-        GestureDetector(
-          onTap: () {
-            if (cubit.selectedAnswer == -1) {
-              Navigator.of(context).pop();
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Pilih jawaban terlebih dahulu'),
+        if (isPreview) ...[
+          GestureDetector(
+            onTap: () => Navigator.of(context).pop(),
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                vertical: 8,
+                horizontal: 32,
+              ),
+              decoration: BoxDecoration(
+                color: const Color(0xff3E4095),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: const Color(0xFFFFB819),
+                  width: 10,
                 ),
-              );
-            } else {
-              cubit.saveAnswer(qId: id - 1);
-              Navigator.of(context).pop();
-              if (id < 3) return;
-              if (id % 3 == 0 || id == 19) {
-                context.read<AnimateScrollCubit>().animateToIndex((id));
-              }
-            }
-          },
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              vertical: 8,
-              horizontal: 32,
-            ),
-            decoration: BoxDecoration(
-              color: const Color(0xff3E4095),
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: const Color(0xFFFFB819),
-                width: 10,
+              ),
+              child: const Text(
+                'Tutup',
+                style: TextStyle(color: Colors.white),
               ),
             ),
-            child: const Text(
-              'Simpan',
-              style: TextStyle(color: Colors.white),
+          ),
+        ] else ...[
+          GestureDetector(
+            onTap: () {
+              if (cubit.selectedAnswer == -1) {
+                Navigator.of(context).pop();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Pilih jawaban terlebih dahulu'),
+                  ),
+                );
+              } else {
+                cubit.saveAnswer(qId: id - 1);
+                Navigator.of(context).pop();
+                if (id < 3) return;
+                if (id % 3 == 0 || id == 19) {
+                  context.read<AnimateScrollCubit>().animateToIndex((id));
+                }
+              }
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                vertical: 8,
+                horizontal: 32,
+              ),
+              decoration: BoxDecoration(
+                color: const Color(0xff3E4095),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: const Color(0xFFFFB819),
+                  width: 10,
+                ),
+              ),
+              child: const Text(
+                'Simpan',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ),
-        ),
+        ],
         const SizedBox(height: 20),
       ],
     );
