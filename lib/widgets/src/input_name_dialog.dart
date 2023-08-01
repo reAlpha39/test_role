@@ -80,6 +80,15 @@ class InputNameDialog {
                         );
                         return;
                       }
+                      if (cubit.nameController.text.length >= 15) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content:
+                                Text('Nama tidak boleh lebih dari 15 huruf'),
+                          ),
+                        );
+                        return;
+                      }
                       cubit.saveName();
                       return Navigator.of(context).pop();
                     },
