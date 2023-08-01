@@ -112,31 +112,35 @@ class QuestionDialog {
                       onTap: () => isPreview
                           ? null
                           : cubit.selectAnswer(int.parse(answer.split('_')[0])),
-                      child: InnerShadow(
-                        blur: 10,
-                        color: Colors.black26,
-                        offset: const Offset(5, 5),
-                        child: Container(
-                          margin: const EdgeInsets.only(bottom: 8),
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 16,
-                            horizontal: 32,
+                      child: Container(
+                        margin: const EdgeInsets.only(bottom: 8),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 16,
+                          horizontal: 32,
+                        ),
+                        decoration: BoxDecoration(
+                          color: cubit.selectedAnswer ==
+                                  int.parse(answer.split('_')[0])
+                              ? Colors.white
+                              : const Color(0xff3E4095),
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 2,
                           ),
-                          decoration: BoxDecoration(
-                            color: cubit.selectedAnswer ==
-                                    int.parse(answer.split('_')[0])
-                                ? const Color(0xFFFFB819)
-                                : const Color(0xff3E4095),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              answer.split('_')[1],
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 12,
-                                color: Colors.white,
-                              ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            answer.split('_')[1],
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.poppins(
+                              fontSize: 12,
+                              color: cubit.selectedAnswer ==
+                                      int.parse(answer.split('_')[0])
+                                  ? const Color(0xff3E4095)
+                                  : Colors.white,
+                            ).copyWith(
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
                         ),
