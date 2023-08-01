@@ -53,12 +53,12 @@ class ResultDialog {
                               width: 400,
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 48),
+                              padding: const EdgeInsets.only(top: 24),
                               child: Text(
                                 'Congratulations!!\n${cubit.name}',
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.bubblegumSans(
-                                  fontSize: 24,
+                                  fontSize: 28,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
@@ -79,12 +79,12 @@ class ResultDialog {
                               width: 400,
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 48),
+                              padding: const EdgeInsets.only(top: 24),
                               child: Text(
                                 'Congratulations!!\n${cubit.name}',
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.bubblegumSans(
-                                  fontSize: 24,
+                                  fontSize: 28,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
@@ -105,12 +105,12 @@ class ResultDialog {
                               width: 400,
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 48),
+                              padding: const EdgeInsets.only(top: 24),
                               child: Text(
                                 'Congratulations!!\n${cubit.name}',
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.bubblegumSans(
-                                  fontSize: 24,
+                                  fontSize: 28,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
@@ -120,7 +120,7 @@ class ResultDialog {
                         ),
                       ),
                     ],
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 24),
                     GestureDetector(
                       onTap: () async {
                         await shareCubit.downloadImage();
