@@ -54,7 +54,7 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
     emit(const StepQuestionState.loaded());
   }
 
-  _resetAnswer() {
+  resetAnswer() {
     emit(const StepQuestionState.loading());
     selectedAnswer = -1;
     emit(const StepQuestionState.loaded());
@@ -66,7 +66,7 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
       answer: selectedAnswer.toString(),
     );
 
-    _resetAnswer();
+    resetAnswer();
 
     if (qId == 19) {
       checkPoint();
