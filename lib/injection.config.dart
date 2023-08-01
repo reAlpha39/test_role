@@ -13,7 +13,8 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:test_role/blocs/animate_scroll/animate_scroll_cubit.dart'
     as _i3;
-import 'package:test_role/blocs/step_question/step_question_cubit.dart' as _i4;
+import 'package:test_role/blocs/share/share_cubit.dart' as _i4;
+import 'package:test_role/blocs/step_question/step_question_cubit.dart' as _i5;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -27,7 +28,8 @@ extension GetItInjectableX on _i1.GetIt {
       environmentFilter,
     );
     gh.factory<_i3.AnimateScrollCubit>(() => _i3.AnimateScrollCubit());
-    gh.factory<_i4.StepQuestionCubit>(() => _i4.StepQuestionCubit());
+    gh.factory<_i4.ShareCubit>(() => _i4.ShareCubit());
+    gh.factory<_i5.StepQuestionCubit>(() => _i5.StepQuestionCubit());
     return this;
   }
 }

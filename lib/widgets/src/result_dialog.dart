@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:test_role/blocs/blocs.dart';
 
 class ResultDialog {
   static void open({
     required BuildContext context,
     required int id,
   }) {
+    final cubit = context.read<StepQuestionCubit>();
+    final shareCubit = context.read<ShareCubit>();
     showDialog(
       useSafeArea: false,
       context: context,
@@ -37,45 +41,89 @@ class ResultDialog {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 32),
                     if (id == 1) ...[
-                      Image.asset('assets/images/hipster_card.png'),
+                      RepaintBoundary(
+                        key: shareCubit.globalKey,
+                        child: Stack(
+                          alignment: AlignmentDirectional.topCenter,
+                          children: [
+                            Image.asset(
+                              'assets/images/hipster_card.png',
+                              width: 400,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 48),
+                              child: Text(
+                                'Congratulations!!\n${cubit.name}',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.bubblegumSans(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                     if (id == 2) ...[
-                      Image.asset('assets/images/hustler_card.png'),
+                      RepaintBoundary(
+                        key: shareCubit.globalKey,
+                        child: Stack(
+                          alignment: AlignmentDirectional.topCenter,
+                          children: [
+                            Image.asset(
+                              'assets/images/hustler_card.png',
+                              width: 400,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 48),
+                              child: Text(
+                                'Congratulations!!\n${cubit.name}',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.bubblegumSans(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                     if (id == 3) ...[
-                      Image.asset('assets/images/hacker_card.png'),
+                      RepaintBoundary(
+                        key: shareCubit.globalKey,
+                        child: Stack(
+                          alignment: AlignmentDirectional.topCenter,
+                          children: [
+                            Image.asset(
+                              'assets/images/hacker_card.png',
+                              width: 400,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 48),
+                              child: Text(
+                                'Congratulations!!\n${cubit.name}',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.bubblegumSans(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                     const SizedBox(height: 32),
                     GestureDetector(
                       onTap: () async {
-                        String url = '';
-                        switch (id) {
-                          case 1:
-                            url =
-                                'https://porcalabs.github.io/test_role/assets/assets/images/hipster_card.png';
-                            break;
-                          case 2:
-                            url =
-                                'https://porcalabs.github.io/test_role/assets/assets/images/hustler_card.png';
-                            break;
-
-                          default:
-                            url =
-                                'https://porcalabs.github.io/test_role/assets/assets/images/hacker_card.png';
-                        }
-                        final Uri uri = Uri.parse(url);
-
-                        if (await canLaunchUrl(uri)) {
-                          await launchUrl(uri);
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Tidak dapat mendownload file'),
-                            ),
-                          );
-                        }
+                        await shareCubit.downloadImage();
                         Navigator.of(context).pop();
                       },
                       child: Container(

@@ -20,7 +20,7 @@ dependencies:
   injectable: ^2.1.1
   json_annotation: ^4.8.1
   percent_indicator: ^4.2.3
-  url_launcher: ^6.1.12
+  web_image_downloader: ^1.0.1
 
 dev_dependencies:
   build_runner: ^2.4.4
