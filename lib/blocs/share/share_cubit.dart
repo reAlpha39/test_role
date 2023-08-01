@@ -1,9 +1,12 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/foundation.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_downloader_web/image_downloader_web.dart';
 import 'package:injectable/injectable.dart';
-import 'package:web_image_downloader/web_image_downloader.dart';
 
 part 'share_state.dart';
 part 'share_cubit.freezed.dart';
@@ -15,8 +18,17 @@ class ShareCubit extends Cubit<ShareState> {
   GlobalKey globalKey = GlobalKey();
 
   Future<void> downloadImage() async {
-    if (kIsWeb) {
-      await WebImageDownloader.downloadImage(globalKey, 'result.png');
-    }
+    var boundary =
+        globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+    final ui.Image image = await boundary.toImage(pixelRatio: 4.0);
+    final ByteData? byteData =
+        await image.toByteData(format: ui.ImageByteFormat.png);
+    final pngBytes = byteData!.buffer.asUint8List();
+
+    await WebImageDownloader.downloadImageFromUInt8List(
+      uInt8List: pngBytes,
+      name: 'result',
+      imageQuality: 1,
+    );
   }
 }
