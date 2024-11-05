@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class MultiHitStack extends Stack {
-  MultiHitStack({
+  const MultiHitStack({
     super.key,
     super.alignment = AlignmentDirectional.topStart,
     super.textDirection,

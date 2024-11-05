@@ -94,14 +94,14 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
       }
     }
 
-    print(
-      'typeA: ' +
-          typeA.toString() +
-          ', typeB: ' +
-          typeB.toString() +
-          ', typeC: ' +
-          typeC.toString(),
-    );
+    // print(
+    //   'typeA: ' +
+    //       typeA.toString() +
+    //       ', typeB: ' +
+    //       typeB.toString() +
+    //       ', typeC: ' +
+    //       typeC.toString(),
+    // );
 
     if (typeA == typeB && typeA > typeC) {
       isNotDif = true;
