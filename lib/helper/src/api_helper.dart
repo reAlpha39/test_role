@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:dio/io.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -10,7 +7,7 @@ class ApiHelper {
   static Dio createDio() {
     var dio = Dio(
       BaseOptions(
-        baseUrl: "http://sebiapi.porcalabs.com/api",
+        baseUrl: "https://sebiapi.porcalabs.com/api",
         contentType: Headers.jsonContentType,
         followRedirects: false,
         validateStatus: (status) {
