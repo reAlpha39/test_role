@@ -8,6 +8,11 @@ class ApiHelper {
     var dio = Dio(
       BaseOptions(
         baseUrl: "https://sebiapi.porcalabs.com/api",
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+        },
         contentType: Headers.jsonContentType,
         followRedirects: false,
         validateStatus: (status) {
