@@ -22,6 +22,8 @@ class SaveTestRecordCubit extends Cubit<SaveTestRecordState> {
       return emit(const _Success());
     }
 
+    emit(const _Loading());
+
     final params = TestRoleEntity(
       name: name,
       noHp: phone,

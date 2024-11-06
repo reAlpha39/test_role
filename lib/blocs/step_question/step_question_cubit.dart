@@ -128,6 +128,8 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
   }
 
   void checkResult(BuildContext context) {
+    emit(const _Loading());
+
     int typeA = 0;
     int typeB = 0;
     int typeC = 0;
