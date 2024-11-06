@@ -20,12 +20,12 @@ class ApiHelper {
     );
 
     // add certificate callback
-    dio.httpClientAdapter = IOHttpClientAdapter(createHttpClient: () {
-      final client = HttpClient();
-      client.badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-      return client;
-    });
+    // dio.httpClientAdapter = IOHttpClientAdapter(createHttpClient: () {
+    //   final client = HttpClient();
+    //   client.badCertificateCallback =
+    //       (X509Certificate cert, String host, int port) => true;
+    //   return client;
+    // });
 
     dio.httpClientAdapter;
 
