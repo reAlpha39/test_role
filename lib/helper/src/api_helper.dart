@@ -9,11 +9,8 @@ class ApiHelper {
       BaseOptions(
         baseUrl: "https://sebiapi.porcalabs.com/api",
         headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+          'Content-Type': 'application/json',
         },
-        contentType: Headers.jsonContentType,
         followRedirects: false,
         validateStatus: (status) {
           return status! < 500;
@@ -21,15 +18,14 @@ class ApiHelper {
       ),
     );
 
-    // add certificate callback
-    // dio.httpClientAdapter = IOHttpClientAdapter(createHttpClient: () {
-    //   final client = HttpClient();
-    //   client.badCertificateCallback =
-    //       (X509Certificate cert, String host, int port) => true;
-    //   return client;
-    // });
-
     dio.httpClientAdapter;
+
+    dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) {
+        // Allow Dio to handle OPTIONS requests automatically
+        return handler.next(options);
+      },
+    ));
 
     dio.interceptors.addAll({
       // AppInterceptor(dio),
