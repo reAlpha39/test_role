@@ -6,15 +6,16 @@ part of 'qa_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_QaModel _$$_QaModelFromJson(Map<String, dynamic> json) => _$_QaModel(
-      id: json['id'] as int?,
+_$QaModelImpl _$$QaModelImplFromJson(Map<String, dynamic> json) =>
+    _$QaModelImpl(
+      id: (json['id'] as num?)?.toInt(),
       question: json['question'] as String?,
       answers:
           (json['answers'] as List<dynamic>?)?.map((e) => e as String).toList(),
       answer: json['answer'] as String?,
     );
 
-Map<String, dynamic> _$$_QaModelToJson(_$_QaModel instance) =>
+Map<String, dynamic> _$$QaModelImplToJson(_$QaModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'question': instance.question,

@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:test_role/models/qa_model/qa_model.dart';
-import 'package:test_role/widgets/widgets.dart';
 
 part 'step_question_state.dart';
 part 'step_question_cubit.freezed.dart';
@@ -24,13 +23,15 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
   String sameTypeA = '';
   String sameTypeB = '';
 
-  String result = '';
+  int result = 0;
 
   TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
 
   @override
   close() async {
     nameController.dispose();
+    phoneController.dispose();
     return super.close();
   }
 
@@ -133,7 +134,7 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
 
     final temp = qaModels!;
 
-    if (!isNotDif && result.isEmpty) {
+    if (!isNotDif && result == 0) {
       // remove last question if no total answer the same
       temp.removeAt(20);
     }
@@ -152,20 +153,20 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
     }
 
     if (typeA > typeB && typeA > typeC) {
-      result = '1';
-      ResultDialog.open(context: context, id: 1);
+      result = 1;
+      emit(_Result(result));
       return;
     }
 
     if (typeB > typeA && typeB > typeC) {
-      result = '2';
-      ResultDialog.open(context: context, id: 2);
+      result = 2;
+      emit(_Result(result));
       return;
     }
 
     if (typeC > typeA && typeC > typeB) {
-      result = '3';
-      ResultDialog.open(context: context, id: 3);
+      result = 3;
+      emit(_Result(result));
       return;
     }
   }

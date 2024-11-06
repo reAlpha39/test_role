@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:test_role/blocs/blocs.dart';
+import 'package:test_role/blocs/save_test_record/save_test_record_cubit.dart';
 import 'package:test_role/views/views.dart';
 
 import 'injection.dart';
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<ShareCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<SaveTestRecordCubit>(),
         ),
       ],
       child: MaterialApp(

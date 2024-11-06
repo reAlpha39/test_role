@@ -69,6 +69,29 @@ class InputNameDialog {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
+                  const SizedBox(height: 8),
+                  TextField(
+                    controller:
+                        context.read<StepQuestionCubit>().phoneController,
+                    decoration: InputDecoration(
+                      hintText: 'Masukkan nomer telepon...',
+                      hintStyle: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                    ),
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   const SizedBox(height: 32),
                   GestureDetector(
                     onTap: () {

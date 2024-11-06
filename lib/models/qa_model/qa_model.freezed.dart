@@ -12,7 +12,7 @@ part of 'qa_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 QaModel _$QaModelFromJson(Map<String, dynamic> json) {
   return _QaModel.fromJson(json);
@@ -25,8 +25,12 @@ mixin _$QaModel {
   List<String>? get answers => throw _privateConstructorUsedError;
   String? get answer => throw _privateConstructorUsedError;
 
+  /// Serializes this QaModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QaModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $QaModelCopyWith<QaModel> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -48,6 +52,8 @@ class _$QaModelCopyWithImpl<$Res, $Val extends QaModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of QaModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -78,22 +84,25 @@ class _$QaModelCopyWithImpl<$Res, $Val extends QaModel>
 }
 
 /// @nodoc
-abstract class _$$_QaModelCopyWith<$Res> implements $QaModelCopyWith<$Res> {
-  factory _$$_QaModelCopyWith(
-          _$_QaModel value, $Res Function(_$_QaModel) then) =
-      __$$_QaModelCopyWithImpl<$Res>;
+abstract class _$$QaModelImplCopyWith<$Res> implements $QaModelCopyWith<$Res> {
+  factory _$$QaModelImplCopyWith(
+          _$QaModelImpl value, $Res Function(_$QaModelImpl) then) =
+      __$$QaModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? id, String? question, List<String>? answers, String? answer});
 }
 
 /// @nodoc
-class __$$_QaModelCopyWithImpl<$Res>
-    extends _$QaModelCopyWithImpl<$Res, _$_QaModel>
-    implements _$$_QaModelCopyWith<$Res> {
-  __$$_QaModelCopyWithImpl(_$_QaModel _value, $Res Function(_$_QaModel) _then)
+class __$$QaModelImplCopyWithImpl<$Res>
+    extends _$QaModelCopyWithImpl<$Res, _$QaModelImpl>
+    implements _$$QaModelImplCopyWith<$Res> {
+  __$$QaModelImplCopyWithImpl(
+      _$QaModelImpl _value, $Res Function(_$QaModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QaModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -102,7 +111,7 @@ class __$$_QaModelCopyWithImpl<$Res>
     Object? answers = freezed,
     Object? answer = freezed,
   }) {
-    return _then(_$_QaModel(
+    return _then(_$QaModelImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -125,12 +134,13 @@ class __$$_QaModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_QaModel implements _QaModel {
-  _$_QaModel({this.id, this.question, final List<String>? answers, this.answer})
+class _$QaModelImpl implements _QaModel {
+  _$QaModelImpl(
+      {this.id, this.question, final List<String>? answers, this.answer})
       : _answers = answers;
 
-  factory _$_QaModel.fromJson(Map<String, dynamic> json) =>
-      _$$_QaModelFromJson(json);
+  factory _$QaModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$QaModelImplFromJson(json);
 
   @override
   final int? id;
@@ -155,10 +165,10 @@ class _$_QaModel implements _QaModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_QaModel &&
+            other is _$QaModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.question, question) ||
                 other.question == question) &&
@@ -166,20 +176,22 @@ class _$_QaModel implements _QaModel {
             (identical(other.answer, answer) || other.answer == answer));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, question,
       const DeepCollectionEquality().hash(_answers), answer);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QaModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_QaModelCopyWith<_$_QaModel> get copyWith =>
-      __$$_QaModelCopyWithImpl<_$_QaModel>(this, _$identity);
+  _$$QaModelImplCopyWith<_$QaModelImpl> get copyWith =>
+      __$$QaModelImplCopyWithImpl<_$QaModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_QaModelToJson(
+    return _$$QaModelImplToJson(
       this,
     );
   }
@@ -190,9 +202,9 @@ abstract class _QaModel implements QaModel {
       {final int? id,
       final String? question,
       final List<String>? answers,
-      final String? answer}) = _$_QaModel;
+      final String? answer}) = _$QaModelImpl;
 
-  factory _QaModel.fromJson(Map<String, dynamic> json) = _$_QaModel.fromJson;
+  factory _QaModel.fromJson(Map<String, dynamic> json) = _$QaModelImpl.fromJson;
 
   @override
   int? get id;
@@ -202,8 +214,11 @@ abstract class _QaModel implements QaModel {
   List<String>? get answers;
   @override
   String? get answer;
+
+  /// Create a copy of QaModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_QaModelCopyWith<_$_QaModel> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$QaModelImplCopyWith<_$QaModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
