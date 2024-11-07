@@ -10,6 +10,7 @@ class TestRoleEntity with _$TestRoleEntity {
     @JsonKey(name: 'no_hp') String? noHp,
     @JsonKey(name: 'take_date') DateTime? takeDate,
     String? image,
+    @JsonKey(name: 'result_id') int? resultId,
   }) = _TestRoleEntity;
 
   factory TestRoleEntity.fromJson(Map<String, dynamic> json) =>

@@ -26,6 +26,8 @@ mixin _$TestRoleEntity {
   @JsonKey(name: 'take_date')
   DateTime? get takeDate => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
+  @JsonKey(name: 'result_id')
+  int? get resultId => throw _privateConstructorUsedError;
 
   /// Serializes this TestRoleEntity to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +49,8 @@ abstract class $TestRoleEntityCopyWith<$Res> {
       {String? name,
       @JsonKey(name: 'no_hp') String? noHp,
       @JsonKey(name: 'take_date') DateTime? takeDate,
-      String? image});
+      String? image,
+      @JsonKey(name: 'result_id') int? resultId});
 }
 
 /// @nodoc
@@ -69,6 +72,7 @@ class _$TestRoleEntityCopyWithImpl<$Res, $Val extends TestRoleEntity>
     Object? noHp = freezed,
     Object? takeDate = freezed,
     Object? image = freezed,
+    Object? resultId = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -87,6 +91,10 @@ class _$TestRoleEntityCopyWithImpl<$Res, $Val extends TestRoleEntity>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      resultId: freezed == resultId
+          ? _value.resultId
+          : resultId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -103,7 +111,8 @@ abstract class _$$TestRoleEntityImplCopyWith<$Res>
       {String? name,
       @JsonKey(name: 'no_hp') String? noHp,
       @JsonKey(name: 'take_date') DateTime? takeDate,
-      String? image});
+      String? image,
+      @JsonKey(name: 'result_id') int? resultId});
 }
 
 /// @nodoc
@@ -123,6 +132,7 @@ class __$$TestRoleEntityImplCopyWithImpl<$Res>
     Object? noHp = freezed,
     Object? takeDate = freezed,
     Object? image = freezed,
+    Object? resultId = freezed,
   }) {
     return _then(_$TestRoleEntityImpl(
       name: freezed == name
@@ -141,6 +151,10 @@ class __$$TestRoleEntityImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
+      resultId: freezed == resultId
+          ? _value.resultId
+          : resultId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -152,7 +166,8 @@ class _$TestRoleEntityImpl implements _TestRoleEntity {
       {this.name,
       @JsonKey(name: 'no_hp') this.noHp,
       @JsonKey(name: 'take_date') this.takeDate,
-      this.image});
+      this.image,
+      @JsonKey(name: 'result_id') this.resultId});
 
   factory _$TestRoleEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$TestRoleEntityImplFromJson(json);
@@ -167,10 +182,13 @@ class _$TestRoleEntityImpl implements _TestRoleEntity {
   final DateTime? takeDate;
   @override
   final String? image;
+  @override
+  @JsonKey(name: 'result_id')
+  final int? resultId;
 
   @override
   String toString() {
-    return 'TestRoleEntity(name: $name, noHp: $noHp, takeDate: $takeDate, image: $image)';
+    return 'TestRoleEntity(name: $name, noHp: $noHp, takeDate: $takeDate, image: $image, resultId: $resultId)';
   }
 
   @override
@@ -182,12 +200,15 @@ class _$TestRoleEntityImpl implements _TestRoleEntity {
             (identical(other.noHp, noHp) || other.noHp == noHp) &&
             (identical(other.takeDate, takeDate) ||
                 other.takeDate == takeDate) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.resultId, resultId) ||
+                other.resultId == resultId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, noHp, takeDate, image);
+  int get hashCode =>
+      Object.hash(runtimeType, name, noHp, takeDate, image, resultId);
 
   /// Create a copy of TestRoleEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -211,7 +232,8 @@ abstract class _TestRoleEntity implements TestRoleEntity {
       {final String? name,
       @JsonKey(name: 'no_hp') final String? noHp,
       @JsonKey(name: 'take_date') final DateTime? takeDate,
-      final String? image}) = _$TestRoleEntityImpl;
+      final String? image,
+      @JsonKey(name: 'result_id') final int? resultId}) = _$TestRoleEntityImpl;
 
   factory _TestRoleEntity.fromJson(Map<String, dynamic> json) =
       _$TestRoleEntityImpl.fromJson;
@@ -226,6 +248,9 @@ abstract class _TestRoleEntity implements TestRoleEntity {
   DateTime? get takeDate;
   @override
   String? get image;
+  @override
+  @JsonKey(name: 'result_id')
+  int? get resultId;
 
   /// Create a copy of TestRoleEntity
   /// with the given fields replaced by the non-null parameter values.

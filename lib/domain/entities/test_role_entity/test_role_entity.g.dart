@@ -14,6 +14,7 @@ _$TestRoleEntityImpl _$$TestRoleEntityImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['take_date'] as String),
       image: json['image'] as String?,
+      resultId: (json['result_id'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$TestRoleEntityImplToJson(
@@ -23,4 +24,5 @@ Map<String, dynamic> _$$TestRoleEntityImplToJson(
       'no_hp': instance.noHp,
       'take_date': instance.takeDate?.toIso8601String(),
       'image': instance.image,
+      'result_id': instance.resultId,
     };

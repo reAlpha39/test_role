@@ -23,6 +23,7 @@ class HomePage extends StatelessWidget {
               return;
             },
             result: (id) => context.read<SaveTestRecordCubit>().saveData(
+                  resultId: context.read<StepQuestionCubit>().result,
                   name: context.read<StepQuestionCubit>().nameController.text,
                   phone: context.read<StepQuestionCubit>().phoneController.text,
                 ),
