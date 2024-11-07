@@ -14,8 +14,9 @@ class ResultDialog {
       useSafeArea: false,
       context: context,
       barrierDismissible: true,
-      builder: (context) => Material(
-        child: Center(
+      builder: (context) => Center(
+        child: Material(
+          type: MaterialType.transparency,
           child: Stack(
             alignment: AlignmentDirectional.topCenter,
             children: [
