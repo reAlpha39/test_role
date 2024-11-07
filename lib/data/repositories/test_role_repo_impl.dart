@@ -15,7 +15,7 @@ class TestRoleRepoImpl implements TestRoleRepo {
   ) async {
     try {
       await _helper.post(
-        url: '/',
+        url: '/users',
         data: entity.toJson(),
       );
 
