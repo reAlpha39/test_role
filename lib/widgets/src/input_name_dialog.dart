@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:test_role/blocs/blocs.dart';
@@ -91,6 +92,11 @@ class InputNameDialog {
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                    keyboardType: TextInputType.phone,
+                    maxLength: 14,
                   ),
                   const SizedBox(height: 32),
                   GestureDetector(
