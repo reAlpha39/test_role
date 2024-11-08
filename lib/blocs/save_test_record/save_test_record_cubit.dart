@@ -18,11 +18,12 @@ class SaveTestRecordCubit extends Cubit<SaveTestRecordState> {
   ) : super(const SaveTestRecordState.initial());
 
   saveData({required int resultId, String? name, String? phone}) async {
+    emit(const _Loading());
+
     if (isSuccess) {
+      await Future.delayed(const Duration(milliseconds: 100));
       return emit(const _Success());
     }
-
-    emit(const _Loading());
 
     final params = TestRoleEntity(
       name: name,

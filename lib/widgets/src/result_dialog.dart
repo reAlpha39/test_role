@@ -123,29 +123,58 @@ class ResultDialog {
                         ),
                       ],
                       const SizedBox(height: 24),
-                      GestureDetector(
-                        onTap: () async {
-                          await shareCubit.downloadImage();
-                          Navigator.of(context).pop();
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 8,
-                            horizontal: 32,
-                          ),
-                          decoration: BoxDecoration(
-                            color: const Color(0xff3E4095),
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: const Color(0xFFFFB819),
-                              width: 10,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () async {
+                              await shareCubit.downloadImage();
+                              // Navigator.of(context).pop();
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 8,
+                                horizontal: 16,
+                              ),
+                              decoration: BoxDecoration(
+                                color: const Color(0xff3E4095),
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(
+                                  color: const Color(0xFFFFB819),
+                                  width: 10,
+                                ),
+                              ),
+                              child: const Text(
+                                'Download',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ),
-                          child: const Text(
-                            'Download',
-                            style: TextStyle(color: Colors.white),
+                          const SizedBox(width: 8),
+                          GestureDetector(
+                            onTap: () async {
+                              await shareCubit.shareImage();
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 8,
+                                horizontal: 16,
+                              ),
+                              decoration: BoxDecoration(
+                                color: const Color(0xff3E4095),
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(
+                                  color: const Color(0xFFFFB819),
+                                  width: 10,
+                                ),
+                              ),
+                              child: const Text(
+                                'Share',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ],
                   ),
