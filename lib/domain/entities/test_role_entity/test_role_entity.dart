@@ -8,6 +8,7 @@ class TestRoleEntity with _$TestRoleEntity {
   factory TestRoleEntity({
     String? name,
     @JsonKey(name: 'no_hp') String? noHp,
+    @JsonKey(name: 'prodi') String? prodi,
     @JsonKey(name: 'take_date') DateTime? takeDate,
     String? image,
     @JsonKey(name: 'result_id') int? resultId,

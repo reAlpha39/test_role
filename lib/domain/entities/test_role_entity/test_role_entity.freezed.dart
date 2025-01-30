@@ -23,6 +23,8 @@ mixin _$TestRoleEntity {
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'no_hp')
   String? get noHp => throw _privateConstructorUsedError;
+  @JsonKey(name: 'prodi')
+  String? get prodi => throw _privateConstructorUsedError;
   @JsonKey(name: 'take_date')
   DateTime? get takeDate => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
@@ -48,6 +50,7 @@ abstract class $TestRoleEntityCopyWith<$Res> {
   $Res call(
       {String? name,
       @JsonKey(name: 'no_hp') String? noHp,
+      @JsonKey(name: 'prodi') String? prodi,
       @JsonKey(name: 'take_date') DateTime? takeDate,
       String? image,
       @JsonKey(name: 'result_id') int? resultId});
@@ -70,6 +73,7 @@ class _$TestRoleEntityCopyWithImpl<$Res, $Val extends TestRoleEntity>
   $Res call({
     Object? name = freezed,
     Object? noHp = freezed,
+    Object? prodi = freezed,
     Object? takeDate = freezed,
     Object? image = freezed,
     Object? resultId = freezed,
@@ -82,6 +86,10 @@ class _$TestRoleEntityCopyWithImpl<$Res, $Val extends TestRoleEntity>
       noHp: freezed == noHp
           ? _value.noHp
           : noHp // ignore: cast_nullable_to_non_nullable
+              as String?,
+      prodi: freezed == prodi
+          ? _value.prodi
+          : prodi // ignore: cast_nullable_to_non_nullable
               as String?,
       takeDate: freezed == takeDate
           ? _value.takeDate
@@ -110,6 +118,7 @@ abstract class _$$TestRoleEntityImplCopyWith<$Res>
   $Res call(
       {String? name,
       @JsonKey(name: 'no_hp') String? noHp,
+      @JsonKey(name: 'prodi') String? prodi,
       @JsonKey(name: 'take_date') DateTime? takeDate,
       String? image,
       @JsonKey(name: 'result_id') int? resultId});
@@ -130,6 +139,7 @@ class __$$TestRoleEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? name = freezed,
     Object? noHp = freezed,
+    Object? prodi = freezed,
     Object? takeDate = freezed,
     Object? image = freezed,
     Object? resultId = freezed,
@@ -142,6 +152,10 @@ class __$$TestRoleEntityImplCopyWithImpl<$Res>
       noHp: freezed == noHp
           ? _value.noHp
           : noHp // ignore: cast_nullable_to_non_nullable
+              as String?,
+      prodi: freezed == prodi
+          ? _value.prodi
+          : prodi // ignore: cast_nullable_to_non_nullable
               as String?,
       takeDate: freezed == takeDate
           ? _value.takeDate
@@ -165,6 +179,7 @@ class _$TestRoleEntityImpl implements _TestRoleEntity {
   _$TestRoleEntityImpl(
       {this.name,
       @JsonKey(name: 'no_hp') this.noHp,
+      @JsonKey(name: 'prodi') this.prodi,
       @JsonKey(name: 'take_date') this.takeDate,
       this.image,
       @JsonKey(name: 'result_id') this.resultId});
@@ -178,6 +193,9 @@ class _$TestRoleEntityImpl implements _TestRoleEntity {
   @JsonKey(name: 'no_hp')
   final String? noHp;
   @override
+  @JsonKey(name: 'prodi')
+  final String? prodi;
+  @override
   @JsonKey(name: 'take_date')
   final DateTime? takeDate;
   @override
@@ -188,7 +206,7 @@ class _$TestRoleEntityImpl implements _TestRoleEntity {
 
   @override
   String toString() {
-    return 'TestRoleEntity(name: $name, noHp: $noHp, takeDate: $takeDate, image: $image, resultId: $resultId)';
+    return 'TestRoleEntity(name: $name, noHp: $noHp, prodi: $prodi, takeDate: $takeDate, image: $image, resultId: $resultId)';
   }
 
   @override
@@ -198,6 +216,7 @@ class _$TestRoleEntityImpl implements _TestRoleEntity {
             other is _$TestRoleEntityImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.noHp, noHp) || other.noHp == noHp) &&
+            (identical(other.prodi, prodi) || other.prodi == prodi) &&
             (identical(other.takeDate, takeDate) ||
                 other.takeDate == takeDate) &&
             (identical(other.image, image) || other.image == image) &&
@@ -208,7 +227,7 @@ class _$TestRoleEntityImpl implements _TestRoleEntity {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, name, noHp, takeDate, image, resultId);
+      Object.hash(runtimeType, name, noHp, prodi, takeDate, image, resultId);
 
   /// Create a copy of TestRoleEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -231,6 +250,7 @@ abstract class _TestRoleEntity implements TestRoleEntity {
   factory _TestRoleEntity(
       {final String? name,
       @JsonKey(name: 'no_hp') final String? noHp,
+      @JsonKey(name: 'prodi') final String? prodi,
       @JsonKey(name: 'take_date') final DateTime? takeDate,
       final String? image,
       @JsonKey(name: 'result_id') final int? resultId}) = _$TestRoleEntityImpl;
@@ -243,6 +263,9 @@ abstract class _TestRoleEntity implements TestRoleEntity {
   @override
   @JsonKey(name: 'no_hp')
   String? get noHp;
+  @override
+  @JsonKey(name: 'prodi')
+  String? get prodi;
   @override
   @JsonKey(name: 'take_date')
   DateTime? get takeDate;

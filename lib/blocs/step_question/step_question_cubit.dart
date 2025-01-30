@@ -27,11 +27,13 @@ class StepQuestionCubit extends Cubit<StepQuestionState> {
 
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  TextEditingController prodiController = TextEditingController();
 
   @override
   close() async {
     nameController.dispose();
     phoneController.dispose();
+    prodiController.dispose();
     return super.close();
   }
 

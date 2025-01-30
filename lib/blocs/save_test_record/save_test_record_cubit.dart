@@ -17,7 +17,12 @@ class SaveTestRecordCubit extends Cubit<SaveTestRecordState> {
     this._insertTestRoleUseCase,
   ) : super(const SaveTestRecordState.initial());
 
-  saveData({required int resultId, String? name, String? phone}) async {
+  saveData({
+    required int resultId,
+    String? name,
+    String? phone,
+    String? prodi,
+  }) async {
     emit(const _Loading());
 
     if (isSuccess) {
@@ -28,6 +33,7 @@ class SaveTestRecordCubit extends Cubit<SaveTestRecordState> {
     final params = TestRoleEntity(
       name: name,
       noHp: phone,
+      prodi: prodi,
       takeDate: DateTime.now(),
       image: "",
       resultId: resultId,

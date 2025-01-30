@@ -10,6 +10,7 @@ _$TestRoleEntityImpl _$$TestRoleEntityImplFromJson(Map<String, dynamic> json) =>
     _$TestRoleEntityImpl(
       name: json['name'] as String?,
       noHp: json['no_hp'] as String?,
+      prodi: json['prodi'] as String?,
       takeDate: json['take_date'] == null
           ? null
           : DateTime.parse(json['take_date'] as String),
@@ -22,6 +23,7 @@ Map<String, dynamic> _$$TestRoleEntityImplToJson(
     <String, dynamic>{
       'name': instance.name,
       'no_hp': instance.noHp,
+      'prodi': instance.prodi,
       'take_date': instance.takeDate?.toIso8601String(),
       'image': instance.image,
       'result_id': instance.resultId,

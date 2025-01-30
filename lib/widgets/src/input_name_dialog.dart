@@ -73,6 +73,30 @@ class InputNameDialog {
                   const SizedBox(height: 8),
                   TextField(
                     controller:
+                        context.read<StepQuestionCubit>().prodiController,
+                    decoration: InputDecoration(
+                      hintText: 'Masukkan prodi...',
+                      hintStyle: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                    ),
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    keyboardType: TextInputType.name,
+                  ),
+                  const SizedBox(height: 8),
+                  TextField(
+                    controller:
                         context.read<StepQuestionCubit>().phoneController,
                     decoration: InputDecoration(
                       hintText: 'Masukkan nomer telepon...',
@@ -81,6 +105,7 @@ class InputNameDialog {
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
+                      counter: const SizedBox(),
                       border: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),

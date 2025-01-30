@@ -26,6 +26,7 @@ class HomePage extends StatelessWidget {
                   resultId: context.read<StepQuestionCubit>().result,
                   name: context.read<StepQuestionCubit>().nameController.text,
                   phone: context.read<StepQuestionCubit>().phoneController.text,
+                  prodi: context.read<StepQuestionCubit>().prodiController.text,
                 ),
           ),
         ),
